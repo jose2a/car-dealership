@@ -1,11 +1,20 @@
 package com.revature.cardealership.model;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected String username;
 	protected String password;
 	protected String firstName;
 	protected String lastName;
+
+	private Dealership dealership;
 
 	public User() {
 		super();
@@ -50,6 +59,14 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public Dealership getDealership() {
+		return dealership;
+	}
+
+	public void setDealership(Dealership dealership) {
+		this.dealership = dealership;
 	}
 
 	@Override
