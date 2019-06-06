@@ -1,11 +1,15 @@
 package com.revature.cardealership.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import com.revature.cardealership.model.Car;
 import com.revature.cardealership.model.Dealership;
+import com.revature.cardealership.model.User;
 
 public class DealershipDAOImplTest {
 
@@ -57,6 +61,29 @@ public class DealershipDAOImplTest {
 		DealershipDAO result = dealershipDAO;
 		
 		assertTrue(result.save());
+	}
+	
+	@Test
+	public void save_Cart_To_File_Should_Return_True() {
+		dealershipDAO.loadDealership();
+		
+		Dealership dealership = dealershipDAO.getDealership();
+		dealership.addCar(new Car("1111111", "Toyota", "Corolla", 17000, false));
+		dealership.addUser(new User("user1", "s3cret", "John", "Doe"));
+		
+		boolean result = dealershipDAO.save();
+		
+		assertTrue(result);
+	}
+	
+	@Test
+	public void load_Dealership_Should_Return_Car() {
+		dealershipDAO.loadDealership();
+		
+		Dealership dealership = dealershipDAO.getDealership();
+		Car car = dealership.getCars().get(0);
+		
+		assertEquals("The car is a Corolla", "Corolla", car.getModel());
 	}
 
 }
