@@ -10,21 +10,16 @@ public class Car implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private String vin; // VIN number
 	private String make; // Make
 	private String model; // Model
 	private double price; // Price
 	private boolean isSold; // Is the car sold?
 
-	private transient Customer customer;
-	private String customerId; // Customer id
+	private Customer customer;
 
-	private transient Contract contract;
-	private String contractId; // Contract id
-
-	private transient List<Offer> offers = new ArrayList<>();
-	private List<String> offerIds = new ArrayList<>(); // Offer ids
+	private List<Contract> contracts = new ArrayList<>();
 
 	public Car() {
 		// TODO Auto-generated constructor stub
@@ -87,44 +82,12 @@ public class Car implements Serializable {
 		this.customer = customer;
 	}
 
-	public String getCustomerId() {
-		return customerId;
+	public List<Contract> getContracts() {
+		return contracts;
 	}
 
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
-	}
-
-	public Contract getContract() {
-		return contract;
-	}
-
-	public void setContract(Contract contract) {
-		this.contract = contract;
-	}
-
-	public String getContractId() {
-		return contractId;
-	}
-
-	public void setContractId(String contractId) {
-		this.contractId = contractId;
-	}
-
-	public List<Offer> getOffers() {
-		return offers;
-	}
-
-	public void setOffers(List<Offer> offers) {
-		this.offers = offers;
-	}
-
-	public List<String> getOfferIds() {
-		return offerIds;
-	}
-
-	public void setOfferIds(List<String> offerIds) {
-		this.offerIds = offerIds;
+	public void setContracts(List<Contract> contracts) {
+		this.contracts = contracts;
 	}
 
 	@Override
