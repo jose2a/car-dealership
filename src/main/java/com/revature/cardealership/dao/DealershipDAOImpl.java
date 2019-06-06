@@ -21,6 +21,7 @@ public class DealershipDAOImpl implements DealershipDAO {
 
 	public DealershipDAOImpl(String fileName) {
 		this.fileName = fileName;
+		this.dealership = null;
 	}
 
 	@Override
@@ -65,7 +66,7 @@ public class DealershipDAOImpl implements DealershipDAO {
 
 	@Override
 	public void setDealership(Dealership dealership) {
-		this.setDealership(dealership);
+		this.dealership = dealership;
 
 	}
 

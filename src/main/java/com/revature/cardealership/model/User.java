@@ -14,8 +14,6 @@ public class User implements Serializable {
 	protected String firstName;
 	protected String lastName;
 
-	private Dealership dealership;
-
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -59,14 +57,6 @@ public class User implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public Dealership getDealership() {
-		return dealership;
-	}
-
-	public void setDealership(Dealership dealership) {
-		this.dealership = dealership;
 	}
 
 	@Override
