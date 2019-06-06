@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Customer extends User {
 
-	private transient List<Car> cars = new ArrayList<>();
-	private List<String> carVins = new ArrayList<>();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private List<Car> cars = new ArrayList<>();
 
-	private transient List<Offer> offers = new ArrayList<>();
-	private List<String> offerIds = new ArrayList<>();
-
-	private transient List<Contract> contracts = new ArrayList<>();
-	private List<String> contractIds = new ArrayList<>();
+	private List<Contract> contracts = new ArrayList<>();
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -39,22 +39,6 @@ public class Customer extends User {
 		this.cars.remove(car);
 	}
 
-	public List<Offer> getOffers() {
-		return offers;
-	}
-
-	public void setOffers(List<Offer> offers) {
-		this.offers = offers;
-	}
-
-	public void addOffer(Offer offer) {
-		this.offers.add(offer);
-	}
-
-	public void removeOffer(Offer offer) {
-		this.offers.remove(offer);
-	}
-
 	public List<Contract> getContracts() {
 		return contracts;
 	}
@@ -62,29 +46,13 @@ public class Customer extends User {
 	public void setContracts(List<Contract> contracts) {
 		this.contracts = contracts;
 	}
-
-	public List<String> getCarVins() {
-		return carVins;
+	
+	public void addContract(Contract contract) {
+		this.contracts.add(contract);
 	}
-
-	public void setCarVins(List<String> carVins) {
-		this.carVins = carVins;
-	}
-
-	public List<String> getOfferIds() {
-		return offerIds;
-	}
-
-	public void setOfferIds(List<String> offerIds) {
-		this.offerIds = offerIds;
-	}
-
-	public List<String> getContractIds() {
-		return contractIds;
-	}
-
-	public void setContractIds(List<String> contractIds) {
-		this.contractIds = contractIds;
+	
+	public void removeContract(Contract contract) {
+		this.contracts.remove(contract);
 	}
 
 	@Override
