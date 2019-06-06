@@ -23,16 +23,12 @@ public class DealershipDAOImplTest {
 
 	@Test
 	public void init_File_Does_No_Exist_Returns_False() {		
-		DealershipDAO result = dealershipDAO;
-		
-		assertFalse(result.loadDealership());
+		assertFalse(dealershipDAO.loadDealership());
 	}
 	
 	@Test
 	public void init_File_Exist_Returns_True() {		
-		DealershipDAO result = dealershipDAO;
-		
-		assertTrue(result.loadDealership());
+		assertTrue(dealershipDAO.loadDealership());
 	}
 	
 	@Test
@@ -47,10 +43,8 @@ public class DealershipDAOImplTest {
 	}
 	
 	@Test
-	public void save_File_Does_No_Exist_Returns_False() {		
-		DealershipDAO result = dealershipDAO;
-		
-		assertFalse(result.save());
+	public void save_File_Does_No_Exist_Returns_False() {				
+		assertFalse(dealershipDAO.save());
 	}
 	
 	@Test
@@ -58,9 +52,7 @@ public class DealershipDAOImplTest {
 		Dealership dealership = new Dealership("ABC Autosales");
 		dealershipDAO.setDealership(dealership);
 		
-		DealershipDAO result = dealershipDAO;
-		
-		assertTrue(result.save());
+		assertTrue(dealershipDAO.save());
 	}
 	
 	@Test
