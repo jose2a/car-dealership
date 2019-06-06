@@ -11,10 +11,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.revature.cardealership.model.Dealership;
+import com.revature.cardealership.utils.LogginUtil;
 
 public class DealershipDAOImpl implements DealershipDAO {
 
-	private static final Logger LOGGER = LogManager.getLogger(CarDAOImpl.class.getName());
+	private static final Logger log = LogManager.getLogger(CarDAOImpl.class.getName());
 
 	private String fileName;
 	private Dealership dealership;
@@ -29,14 +30,16 @@ public class DealershipDAOImpl implements DealershipDAO {
 		try (FileInputStream fis = new FileInputStream(fileName); ObjectInputStream ois = new ObjectInputStream(fis);) {
 
 			this.dealership = (Dealership) ois.readObject();
+			
+			LogginUtil.debug("File for the dealership exist.");
 
 			return true;
 		} catch (FileNotFoundException e) {
-			LOGGER.debug("File for the dealership does not exist.");
+			log.warn("File for the dealership does not exist.");
 		} catch (ClassNotFoundException e) {
-			LOGGER.error(e.getMessage());
+			log.error(e.getMessage());
 		} catch (IOException e) {
-			LOGGER.error(e.getMessage());
+			log.error(e.getMessage());
 		}
 		return false;
 	}
@@ -47,13 +50,15 @@ public class DealershipDAOImpl implements DealershipDAO {
 				ObjectOutputStream oos = new ObjectOutputStream(fos);) {
 
 			oos.writeObject(this.dealership);
+			
+			LogginUtil.debug("File for the dealership exist.");
 
 			return true;
 
 		} catch (FileNotFoundException e) {
-			LOGGER.debug("File not found.");
+			log.warn("File for the dealership does not exist.");
 		} catch (IOException e) {
-			LOGGER.error(e.getMessage());
+			log.error(e.getMessage());
 		}
 
 		return false;
@@ -67,7 +72,6 @@ public class DealershipDAOImpl implements DealershipDAO {
 	@Override
 	public void setDealership(Dealership dealership) {
 		this.dealership = dealership;
-
 	}
 
 }
