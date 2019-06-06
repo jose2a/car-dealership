@@ -15,8 +15,6 @@ import com.revature.cardealership.utils.LogginUtil;
 
 public class DealershipDAOImpl implements DealershipDAO {
 
-	private static final Logger log = LogManager.getLogger(CarDAOImpl.class.getName());
-
 	private String fileName;
 	private Dealership dealership;
 
@@ -35,11 +33,11 @@ public class DealershipDAOImpl implements DealershipDAO {
 
 			return true;
 		} catch (FileNotFoundException e) {
-			log.warn("File for the dealership does not exist.");
+			LogginUtil.debug("File for the dealership does not exist.");
 		} catch (ClassNotFoundException e) {
-			log.error(e.getMessage());
+			LogginUtil.debug(e.getMessage());
 		} catch (IOException e) {
-			log.error(e.getMessage());
+			LogginUtil.debug(e.getMessage());
 		}
 		return false;
 	}
@@ -56,9 +54,9 @@ public class DealershipDAOImpl implements DealershipDAO {
 			return true;
 
 		} catch (FileNotFoundException e) {
-			log.warn("File for the dealership does not exist.");
+			LogginUtil.debug("File for the dealership does not exist.");
 		} catch (IOException e) {
-			log.error(e.getMessage());
+			LogginUtil.debug(e.getMessage());
 		}
 
 		return false;
