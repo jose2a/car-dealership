@@ -12,8 +12,8 @@ public class Dealership implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	private List<User> users;
-	private List<Car> cars;
+	private List<User> users = new ArrayList<>();
+	private List<Car> cars = new ArrayList<>();
 
 	public Dealership() {
 		// TODO Auto-generated constructor stub
