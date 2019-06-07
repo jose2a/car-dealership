@@ -3,6 +3,7 @@ package com.revature.cardealership.services;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 import java.util.UUID;
 
@@ -58,7 +59,9 @@ public class ContractServiceImpl implements ContractService {
 			throw new NotFoundRecordException("Car does not exist in the system.");
 		}
 
-		Contract contract = new Contract(UUID.randomUUID().toString(), LocalDate.now(), amount, 0, 0, false, customer,
+		String contractId = getRandomId();
+
+		Contract contract = new Contract(contractId, LocalDate.now(), amount, 0, 0, false, customer,
 				car);
 
 		car.getContracts().add(contract);
@@ -69,6 +72,12 @@ public class ContractServiceImpl implements ContractService {
 		}
 
 		return false;
+	}
+
+	private String getRandomId() {
+		String[] ids = UUID.randomUUID().toString().split("-");
+
+		return ids[new Random().nextInt(ids.length)];
 	}
 
 	private Customer getCustomer(String username, Iterator<User> userIter) {

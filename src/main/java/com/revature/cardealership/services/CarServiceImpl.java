@@ -61,7 +61,6 @@ public class CarServiceImpl implements CarService {
 		}
 
 		Iterator<Car> carIter = this.dealership.getCars().iterator();
-		boolean isFound = false;
 
 		Car car = null;
 
@@ -69,19 +68,20 @@ public class CarServiceImpl implements CarService {
 			car = carIter.next();
 
 			if (car.getVin().equals(vin)) {
-				isFound = true;
 				break;
 			}
+
+			car = null;
 		}
 
-		if (!isFound) {
+		if (car == null) {
 			LoggingUtil.trace("Car with VIN: " + vin + " was not found.");
 			throw new NotFoundRecordException("Car with VIN: " + vin + " was not found.");
 		}
 
 		this.dealership.removeCar(car);
 
-		return true;
+		return dao.save();
 	}
 
 	@Override
@@ -95,11 +95,10 @@ public class CarServiceImpl implements CarService {
 		Iterator<Car> carIter = this.dealership.getCars().iterator();
 
 		while (carIter.hasNext()) {
-			Car car = (Car) carIter.next();
+			Car car = carIter.next();
 
 			if (car.getCustomer() != null && car.getCustomer().getUsername().equals(username)) {
 				carsForUser.add(car);
-
 			}
 		}
 

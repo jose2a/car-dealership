@@ -64,9 +64,7 @@ public class UserServiceImpl implements UserService {
 
 		this.dealership.addUser(theCustomer);
 
-		dao.save();
-
-		return true;
+		return dao.save();
 	}
 
 	private void validateCustomer(String username, String password, String firstName, String lastName) {
