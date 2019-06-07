@@ -70,8 +70,14 @@ public class CarServiceImplTest {
 		List<Car> cars = new ArrayList<>();
 		cars.add(new Car("1111111", "Toyota", "Corolla", 17000, false));
 		cars.add(new Car("22222222222", "Ford", "Focus", 23000, false));
+		cars.add(new Car("3333333", "Dodge", "Charger", 35000, false));
+		
+		Iterator<Car> iterator = carService.getCars().iterator();
+		
+		while(iterator.hasNext()) {
+			assertTrue(cars.contains(iterator.next()));
+		}
 
-		assertEquals(cars, carService.getCars());
 	}
 
 	@Test
@@ -90,8 +96,8 @@ public class CarServiceImplTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void _7_removeCar_Vin_Is_Null_Retuns_False() throws NotFoundRecordException {
-		boolean removedCar = carService.removeCar("1111122");
+	public void _7_removeCar_Vin_Is_Null_Throws_IllegalArgumentException() throws NotFoundRecordException {
+		boolean removedCar = carService.removeCar(null);
 
 		assertFalse(removedCar);
 	}

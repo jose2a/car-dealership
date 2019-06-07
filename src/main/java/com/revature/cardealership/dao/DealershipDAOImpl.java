@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import com.revature.cardealership.model.Dealership;
-import com.revature.cardealership.utils.LogginUtil;
+import com.revature.cardealership.utils.LoggingUtil;
 
 public class DealershipDAOImpl implements DealershipDAO {
 
@@ -18,7 +18,7 @@ public class DealershipDAOImpl implements DealershipDAO {
 	public DealershipDAOImpl(String fileName, String dealershipName) {
 		this.fileName = fileName;
 		
-		LogginUtil.trace("Create a new dealership in case no file is found");
+		LoggingUtil.trace("Create a new dealership in case no file is found");
 		
 		this.dealership = new Dealership(dealershipName);
 	}
@@ -29,19 +29,19 @@ public class DealershipDAOImpl implements DealershipDAO {
 
 			this.dealership = (Dealership) ois.readObject();
 			
-			LogginUtil.trace("Read dealership from file");
+			LoggingUtil.trace("Read dealership from file");
 
 			return true;
 		} catch (FileNotFoundException e) {
 			this.save();
 			
-			LogginUtil.trace("File does not exist. Trying to create a new one.");
+			LoggingUtil.trace("File does not exist. Trying to create a new one.");
 
-			LogginUtil.debug(e.getMessage());
+			LoggingUtil.debug(e.getMessage());
 		} catch (ClassNotFoundException e) {
-			LogginUtil.debug(e.getMessage());
+			LoggingUtil.debug(e.getMessage());
 		} catch (IOException e) {
-			LogginUtil.debug(e.getMessage());
+			LoggingUtil.debug(e.getMessage());
 		}
 		return false;
 	}
@@ -53,14 +53,14 @@ public class DealershipDAOImpl implements DealershipDAO {
 
 			oos.writeObject(this.dealership);
 			
-			LogginUtil.trace("Wrote dealership to file");
+			LoggingUtil.trace("Wrote dealership to file");
 
 			return true;
 
 		} catch (FileNotFoundException e) {
-			LogginUtil.error(e.getMessage());
+			LoggingUtil.error(e.getMessage());
 		} catch (IOException e) {
-			LogginUtil.error(e.getMessage());
+			LoggingUtil.error(e.getMessage());
 		}
 
 		return false;
