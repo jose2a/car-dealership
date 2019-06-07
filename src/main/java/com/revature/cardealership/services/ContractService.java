@@ -1,14 +1,21 @@
 package com.revature.cardealership.services;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 import com.revature.cardealership.model.Contract;
-import com.revature.cardealership.model.Payment;
 
 public interface ContractService {
 
-	public Contract createContract(String username, String vin, double amount, LocalDate signedDate);
-	public List<Payment> payments(int contractId);
-	public int getRemainingPayments(int contractId);
+	Contract createContract(String username, String vin, double amount, LocalDate signedDate);
+
+	Set<Contract> getAllPaymentsForCustomer(String username);
+
+	Contract getRemainingPayments(int contractId);
+
+	boolean makeAnOffer(String username, String carVin, double amount);
+
+	void acceptOffer(int contractId);
+
+	void rejectOffer(int contractId);
 }
