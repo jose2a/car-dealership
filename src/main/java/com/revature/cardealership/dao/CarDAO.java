@@ -1,6 +1,6 @@
 package com.revature.cardealership.dao;
 
-import java.util.List;
+import java.util.Set;
 
 import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Car;
@@ -14,7 +14,7 @@ public interface CarDAO {
 	public void deleteCar(Car car);
 	
 	public Car getCarByVin(String vin);
-	public List<Car> getAllCars();
+	public Set<Car> getAllCars();
 	
 	public boolean save();
 

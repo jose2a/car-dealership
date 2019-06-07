@@ -1,10 +1,12 @@
 package com.revature.cardealership.dao;
 
+import java.io.IOException;
+
 import com.revature.cardealership.model.Dealership;
 
 public interface DealershipDAO {
 
-	boolean loadDealership();
+	boolean loadDealership() throws IOException;
 
 	void setDealership(Dealership dealership);
 	

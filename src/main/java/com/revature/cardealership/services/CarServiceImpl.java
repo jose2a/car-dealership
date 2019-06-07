@@ -1,38 +1,37 @@
 package com.revature.cardealership.services;
 
-import java.util.List;
+import java.io.IOException;
+import java.util.Set;
 
 import com.revature.cardealership.dao.DealershipDAO;
+import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.model.Dealership;
 import com.revature.cardealership.utils.DAOUtils;
+import com.revature.cardealership.utils.LogginUtil;
 
 public class CarServiceImpl implements CarService {
 
 	private DealershipDAO dao = DAOUtils.geDealershipDAO();
 	private Dealership dealership;
 
-	public CarServiceImpl() {
-		if (dao.loadDealership()) {
-			this.dealership = dao.getDealership();
-		} else {
-			this.dealership = new Dealership();
-			this.dao.setDealership(dealership);
-			this.dao.save();
-		}
+	public CarServiceImpl() throws IOException {
+		dao.loadDealership();
+		this.dealership = dao.getDealership();
 	}
 
 	@Override
-	public boolean addCar(Car car) throws PreexistingRecordException {		
+	public boolean addCar(Car car) throws PreexistingRecordException {
 		if (car != null) {
 			if (!isCarAdded(car)) {
 				dealership.addCar(car);
-				dao.setDealership(dealership);
+//				dao.setDealership(dealership);
 
 				return dao.save();
 			}
-			
+
+			LogginUtil.trace("Car with the same VIN already in the file.");
 			throw new PreexistingRecordException();
 		}
 
@@ -50,19 +49,17 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public List<Car> getCars() {
+	public Set<Car> getCars() {
 		return this.dealership.getCars();
 	}
 
 	@Override
-	public boolean removeCar(String vin) {
-		// TODO Auto-generated method stub
+	public boolean removeCar(String vin) throws NotFoundRecordException {
 		return false;
 	}
 
 	@Override
-	public List<Car> getCarsByCustomerUsername(String username) {
-		// TODO Auto-generated method stub
+	public Set<Car> getCarsByCustomerUsername(String username) {
 		return null;
 	}
 

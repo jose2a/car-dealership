@@ -1,7 +1,8 @@
 package com.revature.cardealership.model;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Customer extends User {
 
@@ -10,9 +11,9 @@ public class Customer extends User {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private List<Car> cars = new ArrayList<>();
+	private Set<Car> cars = new HashSet<>();
 
-	private List<Contract> contracts = new ArrayList<>();
+	private Set<Contract> contracts = new HashSet<>();
 
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -23,11 +24,11 @@ public class Customer extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Car> getCars() {
+	public Set<Car> getCars() {
 		return cars;
 	}
 
-	public void setCars(List<Car> cars) {
+	public void setCars(Set<Car> cars) {
 		this.cars = cars;
 	}
 
@@ -39,11 +40,11 @@ public class Customer extends User {
 		this.cars.remove(car);
 	}
 
-	public List<Contract> getContracts() {
+	public Set<Contract> getContracts() {
 		return contracts;
 	}
 
-	public void setContracts(List<Contract> contracts) {
+	public void setContracts(Set<Contract> contracts) {
 		this.contracts = contracts;
 	}
 	

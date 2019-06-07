@@ -1,8 +1,8 @@
 package com.revature.cardealership.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Car implements Serializable {
 
@@ -19,7 +19,7 @@ public class Car implements Serializable {
 
 	private Customer customer;
 
-	private List<Contract> contracts = new ArrayList<>();
+	private Set<Contract> contracts = new HashSet<>();
 
 	public Car() {
 		// TODO Auto-generated constructor stub
@@ -82,11 +82,11 @@ public class Car implements Serializable {
 		this.customer = customer;
 	}
 
-	public List<Contract> getContracts() {
+	public Set<Contract> getContracts() {
 		return contracts;
 	}
 
-	public void setContracts(List<Contract> contracts) {
+	public void setContracts(Set<Contract> contracts) {
 		this.contracts = contracts;
 	}
 

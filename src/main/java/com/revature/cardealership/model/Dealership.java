@@ -1,8 +1,8 @@
 package com.revature.cardealership.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Dealership implements Serializable {
 
@@ -12,8 +12,8 @@ public class Dealership implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String name;
-	private List<User> users = new ArrayList<>();
-	private List<Car> cars = new ArrayList<>();
+	private Set<User> users = new HashSet<>();
+	private Set<Car> cars = new HashSet<>();
 
 	public Dealership() {
 		// TODO Auto-generated constructor stub
@@ -32,18 +32,15 @@ public class Dealership implements Serializable {
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
+	public Set<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 
 	public void addUser(User user) {
-		if (users == null) {
-			users = new ArrayList<>();
-		}
 		users.add(user);
 	}
 
@@ -53,18 +50,15 @@ public class Dealership implements Serializable {
 		}
 	}
 
-	public List<Car> getCars() {
+	public Set<Car> getCars() {
 		return cars;
 	}
 
-	public void setCars(List<Car> cars) {
+	public void setCars(Set<Car> cars) {
 		this.cars = cars;
 	}
 
 	public void addCar(Car car) {
-		if (cars == null) {
-			cars = new ArrayList<>();
-		}
 		cars.add(car);
 	}
 
