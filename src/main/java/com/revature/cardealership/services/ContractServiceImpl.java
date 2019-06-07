@@ -83,6 +83,11 @@ public class ContractServiceImpl implements ContractService {
 
 	@Override
 	public void acceptOffer(String contractId) throws NotFoundRecordException {
+		
+		if (contractId == null) {
+			throw new IllegalArgumentException("Contract id should not be empty.");
+		}
+		
 		// Access the contracts through the user collection
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
 
@@ -116,6 +121,14 @@ public class ContractServiceImpl implements ContractService {
 		// Access the contracts through the user collection
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
 
+		pending = getContractsByStatus(userIter, ContractStatus.PENDING);
+
+		return pending;
+	}
+
+	private Set<Contract> getContractsByStatus(Iterator<User> userIter, ContractStatus status) {
+		Set<Contract> contracts = new HashSet<>();
+		
 		while (userIter.hasNext()) {
 			User user = userIter.next();
 
@@ -130,18 +143,18 @@ public class ContractServiceImpl implements ContractService {
 					Contract contract = contractIter.next();
 
 					// Check if contract is not accepted
-					if (contract.getStatus() == ContractStatus.PENDING) {
+					if (contract.getStatus() == status) {
 						
 						LoggingUtil.debug(contract.getContractId() + " vin: " + contract.getCar().getVin() + " status: "
 								+ contract.getStatus());
 
-						pending.add(contract);
+						contracts.add(contract);
 					}
 				}
 			}
 		}
-
-		return pending;
+		
+		return contracts;
 	}
 
 	// Generate random Id for contracts
@@ -199,6 +212,7 @@ public class ContractServiceImpl implements ContractService {
 		}
 	}
 
+	// Reject all the offers except the one that is specified
 	private void rejectContractsAndSkipAccepted(Iterator<User> userIter, Contract contractToSkip) {
 
 		while (userIter.hasNext()) {

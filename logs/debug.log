@@ -1,15 +1,95 @@
-2019-06-06 11:52:41 DEBUG CarDAOImpl:41 - File for the cars does not exist.
-2019-06-06 11:52:41 DEBUG CarDAOImpl:41 - File for the cars does not exist.
-2019-06-06 12:02:22 DEBUG CarDAOImpl:33 - File for the dealership does not exist.
-2019-06-06 12:59:47 DEBUG CarDAOImpl:31 - File for the dealership does not exist.
-2019-06-06 12:59:55 DEBUG CarDAOImpl:31 - File for the dealership does not exist.
-2019-06-06 13:03:42 DEBUG CarDAOImpl:34 - File for the dealership does not exist.
-2019-06-06 13:03:58 DEBUG CarDAOImpl:34 - File for the dealership does not exist.
-2019-06-06 13:50:38 DEBUG CarDAOImpl:35 - File for the dealership does not exist.
-2019-06-06 14:47:25 DEBUG LogginUtil:13 - File for the dealership exist.
-2019-06-06 14:50:19 DEBUG LogginUtil:13 - File for the dealership exist.
-2019-06-06 14:51:10 DEBUG LogginUtil:13 - File for the dealership exist.
-2019-06-06 14:51:21 DEBUG LogginUtil:13 - File for the dealership exist.
-2019-06-06 20:03:40 DEBUG LogginUtil:18 - dealership.dat (No such file or directory)
-2019-06-06 20:19:27 DEBUG CarDAOImpl:41 - File for the cars does not exist.
-2019-06-06 20:19:27 DEBUG CarDAOImpl:41 - File for the cars does not exist.
+2019-06-07 09:41:00 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 09:50:40 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 09:52:34 DEBUG LoggingUtil:18 - 54ebee82
+2019-06-07 09:52:34 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 09:52:34 DEBUG LoggingUtil:18 - b0d87e14
+2019-06-07 10:14:18 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222
+2019-06-07 10:14:18 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222
+2019-06-07 10:14:18 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333
+2019-06-07 10:23:02 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 10:23:02 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222
+2019-06-07 10:23:02 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333
+2019-06-07 10:23:35 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222
+2019-06-07 10:23:35 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222
+2019-06-07 10:23:35 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333
+2019-06-07 10:24:22 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 10:24:22 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222
+2019-06-07 10:24:22 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333
+2019-06-07 10:24:34 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222
+2019-06-07 10:24:34 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333
+2019-06-07 10:26:10 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 10:26:10 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 10:29:12 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 10:29:12 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 10:29:24 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 10:29:24 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 10:32:02 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 10:32:02 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 10:32:02 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 10:33:13 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 10:39:24 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b
+2019-06-07 10:39:24 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 10:39:24 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 10:40:47 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 10:48:15 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 10:58:53 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:02:16 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:11:03 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:11:03 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:11:03 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 11:11:03 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 11:12:52 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:12:52 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:12:52 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 11:12:52 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 11:14:06 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:14:30 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:16:33 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:16:33 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:16:33 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 11:16:33 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 11:17:12 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:17:12 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:17:12 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 11:17:12 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 11:18:33 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:18:33 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:18:33 DEBUG LoggingUtil:18 - 54ebee82 vin: 22222222222 accepted: false
+2019-06-07 11:18:33 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 11:18:46 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:19:09 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: b0d87e14
+2019-06-07 11:20:47 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:20:47 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: 54ebee82
+2019-06-07 11:20:47 DEBUG LoggingUtil:18 - Removing: 54ebee82
+2019-06-07 11:27:06 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:27:06 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b current: 54ebee82
+2019-06-07 11:27:06 DEBUG LoggingUtil:18 - Removing: 54ebee82
+2019-06-07 11:44:44 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:44:44 DEBUG LoggingUtil:18 - Removing: 54ebee82
+2019-06-07 11:45:48 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 11:45:48 DEBUG LoggingUtil:18 - Removing: 54ebee82
+2019-06-07 12:19:50 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 12:19:50 DEBUG LoggingUtil:18 - Removing: 54ebee82
+2019-06-07 12:19:50 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 12:20:20 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 13:17:02 DEBUG LoggingUtil:18 - 3d28c4aec141 vin: 22222222222 accepted: false
+2019-06-07 13:17:02 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 accepted: false
+2019-06-07 13:17:02 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 13:17:26 DEBUG LoggingUtil:18 - 3d28c4aec141 vin: 22222222222 accepted: false
+2019-06-07 13:17:26 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 accepted: false
+2019-06-07 13:17:26 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 13:21:57 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 13:21:57 DEBUG LoggingUtil:18 - 3d28c4aec141 vin: 22222222222 accepted: false
+2019-06-07 13:21:57 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 accepted: false
+2019-06-07 13:21:57 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 13:22:59 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 13:25:26 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 13:25:26 DEBUG LoggingUtil:18 - 3d28c4aec141 vin: 22222222222 accepted: false
+2019-06-07 13:25:26 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 accepted: false
+2019-06-07 13:25:26 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 13:25:55 DEBUG LoggingUtil:18 - f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b vin: 22222222222 accepted: true
+2019-06-07 13:26:10 DEBUG LoggingUtil:18 - 3d28c4aec141 vin: 22222222222 accepted: false
+2019-06-07 13:26:10 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 accepted: false
+2019-06-07 13:26:10 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
+2019-06-07 13:30:21 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333
+2019-06-07 14:04:20 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 status: PENDING
