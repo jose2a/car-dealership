@@ -14,9 +14,9 @@ public interface ContractService {
 
 	boolean makeAnOffer(String username, String carVin, double amount) throws NotFoundRecordException;
 
-	void acceptOffer(int contractId);
+	void acceptOffer(String contractId) throws NotFoundRecordException;
 
-	void rejectOffer(int contractId);
-	
-	Set<Contract> getNotAcceptedOffers();
+	void rejectOffer(String contractId);
+
+	Set<Contract> getPendingOffers();
 }

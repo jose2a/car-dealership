@@ -15,7 +15,7 @@ public class Contract implements Serializable {
 	private double amount;
 	private int totalPayments;
 	private int paymentsMade;
-	private boolean isAccepted;
+	private ContractStatus status;
 
 	private Customer customer;
 	private Car car;
@@ -25,14 +25,14 @@ public class Contract implements Serializable {
 	}
 
 	public Contract(String contractId, LocalDate signedDate, double amount, int totalPayments, int paymentsMade,
-			boolean isAccepted, Customer customer, Car car) {
+			ContractStatus status, Customer customer, Car car) {
 		super();
 		this.contractId = contractId;
 		this.signedDate = signedDate;
 		this.amount = amount;
 		this.totalPayments = totalPayments;
 		this.paymentsMade = paymentsMade;
-		this.isAccepted = isAccepted;
+		this.status = status;
 		this.customer = customer;
 		this.car = car;
 	}
@@ -85,12 +85,12 @@ public class Contract implements Serializable {
 		this.paymentsMade = paymentsMade;
 	}
 
-	public boolean isAccepted() {
-		return isAccepted;
+	public ContractStatus getStatus() {
+		return status;
 	}
 
-	public void setAccepted(boolean isAccepted) {
-		this.isAccepted = isAccepted;
+	public void setStatus(ContractStatus status) {
+		this.status = status;
 	}
 
 	public Customer getCustomer() {
