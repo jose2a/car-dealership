@@ -3,6 +3,7 @@ package com.revature.cardealership.ui.screens;
 import java.io.IOException;
 import java.util.Iterator;
 
+import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.services.CarService;
 import com.revature.cardealership.utils.InputUtil;
@@ -43,14 +44,37 @@ public class ListCarScreen implements Screen {
 
 		switch (opt) {
 		case 1:
-			System.out.println("Removing a car.");
+			removeCar();
 			break;
 		case 2:
 			if (previousScreen != null) {
 				previousScreen.display();
 			}
+			break;
 		}
 
+	}
+	
+	private void removeCar() {
+
+		try {
+			System.out.println("Enter VIN number of the car to be deleted:");
+			InputUtil.getString();
+			String vin = InputUtil.getString();
+			
+			carService.removeCar(vin);
+			
+			System.out.println("Car removed successfully!!!");
+
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		} catch (NotFoundRecordException e) {
+			System.out.println(e.getMessage());
+		}
+
+		if (previousScreen != null) {
+			previousScreen.display();
+		}
 	}
 
 }

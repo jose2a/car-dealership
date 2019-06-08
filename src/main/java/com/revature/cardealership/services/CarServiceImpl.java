@@ -55,7 +55,7 @@ public class CarServiceImpl implements CarService {
 	}
 
 	@Override
-	public boolean removeCar(String vin) throws NotFoundRecordException {
+	public boolean removeCar(String vin) throws NotFoundRecordException, IllegalArgumentException {
 		if (vin == null || vin.isEmpty()) {
 			throw new IllegalArgumentException("VIN number should not be empty.");
 		}

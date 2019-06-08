@@ -26,6 +26,8 @@ public class AddCarScreen implements Screen {
 
 		try {
 			carService.addCar(getCarFromEmployee());
+			
+			System.out.println("Car added successfully!!!");
 
 		} catch (PreexistingRecordException e) {
 			System.out.println(e.getMessage());
