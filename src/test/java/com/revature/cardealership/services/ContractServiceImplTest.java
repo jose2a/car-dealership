@@ -1,6 +1,6 @@
 package com.revature.cardealership.services;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.model.Contract;
 import com.revature.cardealership.model.ContractStatus;
+import com.revature.cardealership.model.Payment;
 
 public class ContractServiceImplTest {
 
@@ -53,16 +54,29 @@ public class ContractServiceImplTest {
 		assertTrue(result);
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void acceptOffer_ContractIdIsNull_ShouldThrowIllegalArgumentException() throws NotFoundRecordException {
+		service.acceptOffer(null);
+	}
+
 	@Test(expected = NotFoundRecordException.class)
 	public void acceptOffer_ContractIsNotInTheSystem_ShouldThrowNotFoundRecordException()
 			throws NotFoundRecordException {
-		service.acceptOffer("11234");
+		String contractId = "11234";
+		service.acceptOffer(contractId);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void acceptOffer_ContractWasAlreadyAccepted_ShouldThrowIllegalArgumentException()
+			throws NotFoundRecordException {
+		String contractId = "4019";
+		service.acceptOffer(contractId);
 	}
 
 	@Test
-	public void acceptOffer_ContractIsValidTheContractIsAcceptedChangedSystem_ShouldThrowNotFoundRecordException()
-			throws NotFoundRecordException {
-		service.acceptOffer("f0f90158-c7b5-4f5b-bab9-8f6a5a94e04b");
+	public void acceptOffer_ContractIsValid_ContractStatusIsAccepted() throws NotFoundRecordException {
+		String contractId = "4019";
+		service.acceptOffer(contractId);
 
 		Iterator<Contract> resIter = service.getPendingOffers().iterator();
 
@@ -75,8 +89,36 @@ public class ContractServiceImplTest {
 
 	}
 
+	@Test(expected = IllegalArgumentException.class)
+	public void rejectOffer_ContractIdIsNull_ShouldThrowIllegalArgumentException() throws NotFoundRecordException {
+		service.rejectOffer(null);
+	}
+
+	@Test(expected = NotFoundRecordException.class)
+	public void rejectOffer_ContractIsNotInTheSystem_ShouldThrowNotFoundRecordException()
+			throws NotFoundRecordException {
+		String contractId = "11234";
+		service.rejectOffer(contractId);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void rejectOffer_ContractWasAlreadyAccepted_ShouldThrowIllegalArgumentException()
+			throws NotFoundRecordException {
+		String contractId = "4019";
+		service.rejectOffer(contractId);
+	}
+
 	@Test
-	public void getPendingOffers_ShouldReturnContractsWithIsAcceptedEqualsFalse() {
+	public void rejectOffer_ContractIsValid_ContractStatusIsREJECTED() throws NotFoundRecordException {
+		String contractId = "923c";
+		service.rejectOffer(contractId);
+
+		assertTrue(true); // If we get here nothing went wrong
+
+	}
+
+	@Test
+	public void getPendingOffers_ShouldReturnContractsWithStatusPENDING() {
 		Set<Contract> contracts = service.getPendingOffers();
 
 		Iterator<Contract> noAccepted = contracts.iterator();
@@ -84,9 +126,53 @@ public class ContractServiceImplTest {
 		while (noAccepted.hasNext()) {
 			Contract contract = noAccepted.next();
 
-			assertFalse(contract.getStatus() == ContractStatus.PENDING);
+			assertEquals(ContractStatus.PENDING, contract.getStatus());
 
 		}
+	}
+
+	// 4019 vin: 3333333 accepted: ACCEPTED
+	@Test
+	public void getAllPayments_ShouldReturnSetWithPayments() {
+
+		Set<Payment> payments = service.getAllPayments();
+
+		assertEquals(15, payments.size());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void getRemainingPayments_ContractIdIsNull_ShouldThrowIllegalArgumentException() {
+		service.getRemainingPayments(null);
+	}
+
+	@Test
+	public void getRemainingPayments_ShouldReturnSetWithPayments() {
+
+		Set<Payment> payments = service.getRemainingPayments("4019");
+
+		assertEquals(36, payments.size());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void getAllPaymentsForCustomer_CustomerUsernameIsNull_ShouldThrowIllegalArgumentException()
+			throws NotFoundRecordException {
+		service.getAllPaymentsForCustomer(null);
+	}
+
+	@Test(expected = NotFoundRecordException.class)
+	public void getAllPaymentsForCustomer_CustomerIsNotInFile_ShouldThrowNotFoundRecordException() throws NotFoundRecordException {
+
+		service.getAllPaymentsForCustomer("user22");
+	}
+
+	// user2
+	@Test
+	public void getAllPaymentsForCustomer_CustomerUsernameIsValid_ShouldReturnSetWithPayments()
+			throws NotFoundRecordException {
+
+		Set<Payment> payments = service.getAllPaymentsForCustomer("user2");
+
+		assertEquals(15, payments.size());
 	}
 
 }

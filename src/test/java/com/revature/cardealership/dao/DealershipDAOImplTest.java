@@ -14,7 +14,7 @@ import org.junit.runners.MethodSorters;
 
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.model.Dealership;
-import com.revature.cardealership.model.User;
+import com.revature.cardealership.model.Employee;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class DealershipDAOImplTest {
@@ -56,7 +56,7 @@ public class DealershipDAOImplTest {
 		
 		Dealership dealership = dealershipDAO.getDealership();
 		dealership.addCar(new Car("1111111", "Toyota", "Corolla", 17000, false));
-		dealership.addUser(new User("user1", "s3cret", "John", "Doe"));
+		dealership.addUser(new Employee("user1", "s3cret", "John", "Doe"));
 		
 		boolean result = dealershipDAO.save();
 		

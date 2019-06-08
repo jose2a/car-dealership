@@ -1,13 +1,14 @@
 package com.revature.cardealership.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-public class Payment {
+@SuppressWarnings("rawtypes")
+public class Payment implements Comparable {
 
-	private int paymentNo;
+	private Integer paymentNo;
 	private String customerInfo;
 	private String carInfo;
-	private LocalDateTime paidDate;
+	private LocalDate paidDate;
 	private double amountPaid;
 
 	public Payment() {
@@ -15,7 +16,7 @@ public class Payment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Payment(int paymentNo, String customerInfo, String carInfo, LocalDateTime paidDate, double amountPaid) {
+	public Payment(Integer paymentNo, String customerInfo, String carInfo, LocalDate paidDate, double amountPaid) {
 		super();
 		this.paymentNo = paymentNo;
 		this.customerInfo = customerInfo;
@@ -24,11 +25,11 @@ public class Payment {
 		this.amountPaid = amountPaid;
 	}
 
-	public int getPaymentNo() {
+	public Integer getPaymentNo() {
 		return paymentNo;
 	}
 
-	public void setPaymentNo(int paymentNo) {
+	public void setPaymentNo(Integer paymentNo) {
 		this.paymentNo = paymentNo;
 	}
 
@@ -48,11 +49,11 @@ public class Payment {
 		this.carInfo = carInfo;
 	}
 
-	public LocalDateTime getPaidDate() {
+	public LocalDate getPaidDate() {
 		return paidDate;
 	}
 
-	public void setPaidDate(LocalDateTime paidDate) {
+	public void setPaidDate(LocalDate paidDate) {
 		this.paidDate = paidDate;
 	}
 
@@ -68,6 +69,11 @@ public class Payment {
 	public String toString() {
 		return "Payment No: " + paymentNo + ", Customer: " + customerInfo + ", Car: " + carInfo + ", Paid On: "
 				+ paidDate + ", Amount: " + amountPaid;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return paymentNo.compareTo(((Payment)o).getPaymentNo());
 	}
 
 }

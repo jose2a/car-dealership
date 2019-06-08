@@ -93,3 +93,82 @@
 2019-06-07 13:26:10 DEBUG LoggingUtil:18 - b0d87e14 vin: 3333333 accepted: false
 2019-06-07 13:30:21 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333
 2019-06-07 14:04:20 DEBUG LoggingUtil:18 - 84eb312e1fba vin: 3333333 status: PENDING
+2019-06-07 14:08:51 DEBUG LoggingUtil:18 - dealership.dat (No such file or directory)
+2019-06-07 14:09:50 DEBUG LoggingUtil:18 - 7f314109ab5b vin: 22222222222 status: PENDING
+2019-06-07 14:09:50 DEBUG LoggingUtil:18 - b1cc vin: 3333333 status: PENDING
+2019-06-07 14:11:38 DEBUG LoggingUtil:18 - 7f314109ab5b vin: 22222222222 status: PENDING
+2019-06-07 14:11:38 DEBUG LoggingUtil:18 - b1cc vin: 3333333 status: PENDING
+2019-06-07 14:14:43 DEBUG LoggingUtil:18 - 7f314109ab5b vin: 22222222222 status: PENDING
+2019-06-07 14:14:43 DEBUG LoggingUtil:18 - b1cc vin: 3333333 status: PENDING
+2019-06-07 14:16:03 DEBUG LoggingUtil:18 - 7f314109ab5b vin: 22222222222 status: PENDING
+2019-06-07 14:16:03 DEBUG LoggingUtil:18 - b1cc vin: 3333333 status: PENDING
+2019-06-07 14:19:24 DEBUG LoggingUtil:18 - dealership.dat (No such file or directory)
+2019-06-07 14:20:02 DEBUG LoggingUtil:18 - 4019 vin: 3333333 status: PENDING
+2019-06-07 14:20:02 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING
+2019-06-07 14:20:21 DEBUG LoggingUtil:18 - 4019 vin: 3333333 status: PENDING
+2019-06-07 14:20:21 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING
+2019-06-07 14:21:17 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING
+2019-06-07 14:21:17 DEBUG LoggingUtil:18 - 4019 vin: 3333333 status: PENDING
+2019-06-07 14:21:17 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING
+2019-06-07 14:21:17 DEBUG LoggingUtil:18 - 4537 vin: 3333333 status: PENDING
+2019-06-07 14:22:10 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: PENDING
+2019-06-07 14:22:11 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING
+2019-06-07 14:22:11 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING
+2019-06-07 14:22:27 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING
+2019-06-07 14:22:27 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING
+2019-06-07 16:00:49 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 16:00:49 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING
+2019-06-07 16:00:49 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING
+2019-06-07 16:02:52 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 16:02:52 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 16:07:42 DEBUG LoggingUtil:18 - 4019 vin: 3333333 status: ACCEPTED Total Payments: 36
+2019-06-07 18:17:16 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 18:17:16 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 18:23:35 DEBUG LoggingUtil:18 - 4019 vin: 3333333 status: ACCEPTED Total Payments: 36
+2019-06-07 18:24:50 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 18:25:29 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 18:25:37 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 18:25:53 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 18:26:32 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 19:09:33 DEBUG LoggingUtil:18 - 4019 vin: 3333333 status: ACCEPTED Total Payments: 36
+2019-06-07 19:09:53 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 19:09:53 DEBUG LoggingUtil:18 - 4537 vin: 3333333 status: REJECTED Total Payments: 0
+2019-06-07 19:09:53 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 19:10:42 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:10:42 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:10:42 DEBUG LoggingUtil:18 - 923c vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:10:42 DEBUG LoggingUtil:18 - 4da1 vin: 3333333 status: PENDING Total Payments: 0
+2019-06-07 19:23:13 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 19:23:13 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:23:13 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:23:13 DEBUG LoggingUtil:18 - 923c vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:23:13 DEBUG LoggingUtil:18 - 4da1 vin: 3333333 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - 923c vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - 4da1 vin: 3333333 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - 923c vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 19:31:14 DEBUG LoggingUtil:18 - 4da1 vin: 3333333 status: PENDING Total Payments: 0
+2019-06-07 20:01:06 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 20:01:23 DEBUG LoggingUtil:18 - 923c vin: 22222222222 accepted: PENDING
+2019-06-07 20:01:40 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 20:01:40 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 20:01:40 DEBUG LoggingUtil:18 - 4da1 vin: 3333333 status: PENDING Total Payments: 0
+2019-06-07 20:01:40 DEBUG LoggingUtil:18 - 49e0 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 20:01:40 DEBUG LoggingUtil:18 - 765cd4fad167 vin: 3333333 status: PENDING Total Payments: 0
+2019-06-07 20:26:39 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 20:26:54 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 20:26:54 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 20:26:54 DEBUG LoggingUtil:18 - 49e0 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 21:16:57 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 21:16:57 DEBUG LoggingUtil:18 - abdb vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 21:16:57 DEBUG LoggingUtil:18 - e5a5d838 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 21:16:57 DEBUG LoggingUtil:18 - 49e0 vin: 22222222222 status: PENDING Total Payments: 0
+2019-06-07 21:46:14 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 22:01:22 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 22:05:53 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-07 22:06:42 DEBUG LoggingUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED

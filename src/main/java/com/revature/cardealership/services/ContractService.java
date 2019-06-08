@@ -8,15 +8,19 @@ import com.revature.cardealership.model.Payment;
 
 public interface ContractService {
 
-	Set<Payment> getAllPaymentsForCustomer(String username);
+	Set<Payment> getAllPayments();
 
-	Set<Payment> getRemainingPayments(int contractId);
+	Set<Payment> getAllPaymentsForCustomer(String username) throws NotFoundRecordException;
+
+	Set<Payment> getRemainingPayments(String contractId);
 
 	boolean makeAnOffer(String username, String carVin, double amount) throws NotFoundRecordException;
 
 	void acceptOffer(String contractId) throws NotFoundRecordException;
 
-	void rejectOffer(String contractId);
+	void rejectOffer(String contractId) throws NotFoundRecordException;
 
 	Set<Contract> getPendingOffers();
+
+	Set<Contract> getAllOffers();
 }

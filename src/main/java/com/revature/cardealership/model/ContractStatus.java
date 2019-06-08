@@ -1,5 +1,5 @@
 package com.revature.cardealership.model;
 
 public enum ContractStatus {
-	ACCEPTED, REJECTED, PENDING
+	ACCEPTED, REJECTED, PENDING, ALL
 }

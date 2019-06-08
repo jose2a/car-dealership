@@ -12,9 +12,10 @@ public class Contract implements Serializable {
 
 	private String contractId;
 	private LocalDate signedDate;
-	private double amount;
-	private int totalPayments;
-	private int paymentsMade;
+	private double amount; // car's sold price
+	private int totalPayments; // Total number of payments
+	private int paymentsMade; // Number of payments made
+	private double monthlyPayment; // amount to pay every month
 	private ContractStatus status;
 
 	private Customer customer;
@@ -31,6 +32,7 @@ public class Contract implements Serializable {
 		this.signedDate = signedDate;
 		this.amount = amount;
 		this.totalPayments = totalPayments;
+		this.monthlyPayment = 0.0;
 		this.paymentsMade = paymentsMade;
 		this.status = status;
 		this.customer = customer;
@@ -61,14 +63,6 @@ public class Contract implements Serializable {
 		this.amount = amount;
 	}
 
-	public int getTotalMonths() {
-		return totalPayments;
-	}
-
-	public void setTotalMonths(int totalMonths) {
-		this.totalPayments = totalMonths;
-	}
-
 	public int getTotalPayments() {
 		return totalPayments;
 	}
@@ -83,6 +77,14 @@ public class Contract implements Serializable {
 
 	public void setPaymentsMade(int paymentsMade) {
 		this.paymentsMade = paymentsMade;
+	}
+
+	public double getMonthlyPayment() {
+		return monthlyPayment;
+	}
+
+	public void setMonthlyPayment(double monthlyPayment) {
+		this.monthlyPayment = monthlyPayment;
 	}
 
 	public ContractStatus getStatus() {
@@ -151,7 +153,8 @@ public class Contract implements Serializable {
 	@Override
 	public String toString() {
 		return "Contract [idContract=" + contractId + ", signedDate=" + signedDate + ", amount=" + amount
-				+ ", totalMonths=" + totalPayments + ", customer=" + customer + ", car=" + car + "]";
+				+ ", paymentsMade=" + paymentsMade + ", totalPayments=" + totalPayments + ", monthlyPayment="
+				+ monthlyPayment + ", status=" + status + ", customer=" + customer + ", car=" + car + "]";
 	}
 
 }

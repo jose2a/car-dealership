@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 
 import com.revature.cardealership.dao.DealershipDAO;
@@ -24,6 +25,7 @@ public class ContractServiceImpl implements ContractService {
 
 	private DealershipDAO dao = DAOUtils.geDealershipDAO();
 	private Dealership dealership;
+	private static final int TOTAL_CONTRACT_MONTHS = 36;
 
 	public ContractServiceImpl() throws IOException {
 		dao.loadDealership();
@@ -31,15 +33,56 @@ public class ContractServiceImpl implements ContractService {
 	}
 
 	@Override
-	public Set<Payment> getAllPaymentsForCustomer(String username) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Payment> getAllPayments() {
+		Iterator<User> userIter = this.dealership.getUsers().iterator();
+
+		Iterator<Contract> contractIter = getContractsByStatus(userIter, ContractStatus.ALL).iterator();
+
+		return getPaymentsFromContracts(contractIter);
 	}
 
 	@Override
-	public Set<Payment> getRemainingPayments(int contractId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Payment> getAllPaymentsForCustomer(String username) throws NotFoundRecordException {
+		if (username == null) {
+			throw new IllegalArgumentException("Please select a valid customer username.");
+		}
+		
+		Iterator<User> userIter = this.dealership.getUsers().iterator();
+		Customer customer = getCustomerByUsername(username, userIter);
+		
+		if (customer == null) {
+			throw new NotFoundRecordException("The customer is not in the system.");
+		}
+		
+		Set<Payment> paymentsFromContracts = getPaymentsFromContracts(customer.getContracts().iterator());
+		
+		return paymentsFromContracts;
+	}
+
+	@Override
+	public Set<Payment> getRemainingPayments(String contractId) {
+		if (contractId == null) {
+			throw new IllegalArgumentException("Please select a valid offer number.");
+		}
+		
+		Set<Payment> payments = new TreeSet<>();
+
+		Iterator<User> userIter = this.dealership.getUsers().iterator();
+
+		Contract contract = findContractByContractId(contractId, userIter);
+
+		// Get all the payments made to a contract
+		payments.addAll(getPaymentForContract(contract));
+
+		// Adding the contract's remaining payments to the list
+		for (int i = contract.getPaymentsMade(); i < contract.getTotalPayments(); i++) {
+			Payment payment = new Payment(i + 1, contract.getCustomer().toString(), contract.getCar().toString(), null,
+					0.0);
+
+			payments.add(payment);
+		}
+
+		return payments;
 	}
 
 	@Override
@@ -67,7 +110,7 @@ public class ContractServiceImpl implements ContractService {
 		// Get new id for contract
 		String contractId = getRandomContractId();
 
-		// Create contract
+		// Create contract, set it to PENDING
 		Contract contract = new Contract(contractId, LocalDate.now(), amount, 0, 0, ContractStatus.PENDING, customer,
 				car);
 
@@ -83,58 +126,99 @@ public class ContractServiceImpl implements ContractService {
 
 	@Override
 	public void acceptOffer(String contractId) throws NotFoundRecordException {
-		
+
 		if (contractId == null) {
 			throw new IllegalArgumentException("Contract id should not be empty.");
 		}
-		
+
 		// Access the contracts through the user collection
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
 
 		Contract contract = findContractByContractId(contractId, userIter);
-		
+
 		if (contract == null) {
-			throw new NotFoundRecordException("Contract does not exist in the system");
+			throw new NotFoundRecordException("Offer does not exist in the system");
 		}
 
+		if (contract.getStatus() == ContractStatus.REJECTED) {
+			throw new IllegalArgumentException("This offer was already rejected.");
+		}
+
+		// If the offer was accepted, we don't need to accept it again
 		if (contract.getStatus() != ContractStatus.ACCEPTED) {
 			contract.setStatus(ContractStatus.ACCEPTED);
+			contract.setTotalPayments(TOTAL_CONTRACT_MONTHS);
+
+			double monthlyPayment = contract.getAmount() / TOTAL_CONTRACT_MONTHS;
+			contract.setMonthlyPayment(monthlyPayment);
+
+			userIter = this.dealership.getUsers().iterator();
+
+			rejectContractsAndSkipAccepted(userIter, contract);
+
+			this.dao.save();
 		}
-
-		userIter = this.dealership.getUsers().iterator();
-
-		rejectContractsAndSkipAccepted(userIter, contract);
-
-		this.dao.save();
 	}
 
 	@Override
-	public void rejectOffer(String contractId) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Set<Contract> getPendingOffers() {
-		Set<Contract> pending = new HashSet<>();
+	public void rejectOffer(String contractId) throws NotFoundRecordException {
+		if (contractId == null) {
+			throw new IllegalArgumentException("Contract id should not be empty.");
+		}
 
 		// Access the contracts through the user collection
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
 
-		pending = getContractsByStatus(userIter, ContractStatus.PENDING);
+		Contract contract = findContractByContractId(contractId, userIter);
 
-		return pending;
+		if (contract == null) {
+			throw new NotFoundRecordException("Offer does not exist in the system");
+		}
+
+		if (contract.getStatus() == ContractStatus.ACCEPTED) {
+			throw new IllegalArgumentException("This offer was already acepted.");
+		}
+
+		// If the contract was rejected we don't need to reject it and save it again
+		if (contract.getStatus() != ContractStatus.REJECTED) {
+			contract.setStatus(ContractStatus.REJECTED);
+
+			this.dao.save();
+		}
 	}
 
+	@Override
+	public Set<Contract> getPendingOffers() {
+		// Access the contracts through the user collection
+		Iterator<User> userIter = this.dealership.getUsers().iterator();
+
+		return getContractsByStatus(userIter, ContractStatus.PENDING);
+	}
+
+	@Override
+	public Set<Contract> getAllOffers() {
+		// Access the contracts through the user collection
+		Iterator<User> userIter = this.dealership.getUsers().iterator();
+
+		return getContractsByStatus(userIter, ContractStatus.ALL);
+	}
+
+	// Get contracts that meet the status
 	private Set<Contract> getContractsByStatus(Iterator<User> userIter, ContractStatus status) {
 		Set<Contract> contracts = new HashSet<>();
-		
+
 		while (userIter.hasNext()) {
 			User user = userIter.next();
 
 			// Check if user is a Customer
 			if (user instanceof Customer) {
 				Customer customer = (Customer) user;
+
+				// If we select all, we didn't filter the contracts
+				if (status == ContractStatus.ALL) {
+					contracts.addAll(customer.getContracts());
+					break;
+				}
 
 				// Access customers' contracts
 				Iterator<Contract> contractIter = customer.getContracts().iterator();
@@ -144,16 +228,15 @@ public class ContractServiceImpl implements ContractService {
 
 					// Check if contract is not accepted
 					if (contract.getStatus() == status) {
-						
-						LoggingUtil.debug(contract.getContractId() + " vin: " + contract.getCar().getVin() + " status: "
-								+ contract.getStatus());
+
+						LoggingUtil.debug(contract.toString());
 
 						contracts.add(contract);
 					}
 				}
 			}
 		}
-		
+
 		return contracts;
 	}
 
@@ -213,6 +296,7 @@ public class ContractServiceImpl implements ContractService {
 	}
 
 	// Reject all the offers except the one that is specified
+	// This method is useful when we accept an offer
 	private void rejectContractsAndSkipAccepted(Iterator<User> userIter, Contract contractToSkip) {
 
 		while (userIter.hasNext()) {
@@ -259,6 +343,7 @@ public class ContractServiceImpl implements ContractService {
 
 					// Check if contract is in the system
 					if (contract.getContractId().equals(contractId)) {
+						
 						LoggingUtil.debug(contract.getContractId() + " vin: " + contract.getCar().getVin()
 								+ " accepted: " + contract.getStatus());
 						break;
@@ -274,6 +359,34 @@ public class ContractServiceImpl implements ContractService {
 		}
 
 		return contract;
+	}
+	
+	// Get all the payments for the list of contracts
+	private Set<Payment> getPaymentsFromContracts(Iterator<Contract> contractIter) {
+		Set<Payment> payments = new HashSet<>();
+
+		while (contractIter.hasNext()) {
+			Contract contract = contractIter.next();
+
+			payments.addAll(getPaymentForContract(contract));
+
+		}
+		return payments;
+	}
+
+	// Get payment for an specific contract
+	private Set<Payment> getPaymentForContract(Contract contract) {
+		Set<Payment> payments = new HashSet<>();
+
+		for (int i = 0; i < contract.getPaymentsMade(); i++) {
+			LocalDate paidDate = contract.getSignedDate().plusMonths(i);
+
+			Payment payment = new Payment(i + 1, contract.getCustomer().toString(), contract.getCar().toString(),
+					paidDate, contract.getMonthlyPayment());
+			payments.add(payment);
+		}
+
+		return payments;
 	}
 
 }
