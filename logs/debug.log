@@ -1,1 +1,4 @@
 2019-06-08 01:46:09 ERROR LoggingUtil:33 - Cannot run program "cls": error=2, No such file or directory
+2019-06-08 11:39:35 DEBUG LogUtil:18 - abdb vin: 22222222222 accepted: PENDING
+2019-06-08 11:40:10 DEBUG LogUtil:18 - 765cd4fad167 vin: 3333333 accepted: REJECTED
+2019-06-08 11:41:30 DEBUG LogUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED

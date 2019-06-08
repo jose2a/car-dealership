@@ -44,6 +44,7 @@ public class WelcomeScreen implements Screen {
 			loginScreen.display();
 			break;
 		case 2:
+			// Register user
 			break;
 		case 3:
 			if (previousScreen != null) {

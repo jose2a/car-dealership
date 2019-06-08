@@ -344,8 +344,7 @@ public class ContractServiceImpl implements ContractService {
 					// Check if contract is in the system
 					if (contract.getContractId().equals(contractId)) {
 						
-						LogUtil.debug(contract.getContractId() + " vin: " + contract.getCar().getVin()
-								+ " accepted: " + contract.getStatus());
+						LogUtil.debug(contract.toSingleLineString());
 						break;
 					}
 

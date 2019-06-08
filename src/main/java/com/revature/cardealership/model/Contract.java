@@ -152,8 +152,13 @@ public class Contract implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Offer No: " + contractId + "\nCustomer:" + customer + "\nCar: " + car + "\nSigned On: " + signedDate
+		return "Offer No: " + contractId + "\nCustomer: " + customer + "\nCar: " + car + "\nSigned On: " + signedDate
 				+ "\nAmount Offered: " + amount + "\nStatus: " + status.toString();
+	}
+	
+	public String toSingleLineString() {
+		return "Offer No: " + contractId + ", Customer: " + customer + ", Car: " + car.toSingleLineString() + ", Signed On: " + signedDate
+				+ ", Amount Offered: " + amount + ", Status: " + status.toString();
 	}
 
 }

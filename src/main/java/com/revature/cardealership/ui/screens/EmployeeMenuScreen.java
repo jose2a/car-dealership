@@ -13,6 +13,7 @@ public class EmployeeMenuScreen implements Screen {
 	@Override
 	public void display() {
 		int opt = 0;
+		
 		System.out.println("----- EMPLOYEE MENU -----");
 		System.out.println("1. See cars.");
 		System.out.println("2. Add car.");
@@ -44,10 +45,15 @@ public class EmployeeMenuScreen implements Screen {
 			}
 			break;
 		case 3:
-//			option = MenuOptions.LIST_OFFER_EMPLOYEE;
+			try {
+				Screen listOfferScreen = new ListOfferScreen(this);
+				listOfferScreen.display();
+			} catch (IOException e) {
+				LogUtil.error(e.getMessage());
+			}
 			break;
 		case 4:
-//			option = MenuOptions.LIST_PAYMENTS_EMPLOYEE;
+			// List payments
 			break;
 		case 5:
 			System.exit(0);
