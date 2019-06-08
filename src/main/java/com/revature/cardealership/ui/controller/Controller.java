@@ -1,5 +1,8 @@
 package com.revature.cardealership.ui.controller;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 import com.revature.cardealership.model.User;
 import com.revature.cardealership.ui.listeners.ChooseOptionListener;
 import com.revature.cardealership.ui.listeners.LoginUserListener;
@@ -11,17 +14,18 @@ import com.revature.cardealership.utils.LoggingUtil;
 
 public class Controller implements LoginUserListener, ChooseOptionListener {
 
-	private Screen lastScreenOpen; // Save a reference to the last screen showed so that we can go back
+	private Deque<Screen> lastScreenOpenDeque; // Save a reference to the last screen showed so that we can go back
 
 	private LoginScreen loginScreen;
 	private EmployeeMainMenuScreen employeeMainMenuScreen;
 	private ListCarScreen listCarScreen;
 
 	private User user;
-	private int option;
+	private MenuOptions option;
 
 	public Controller() {
 		setUp();
+		lastScreenOpenDeque = new LinkedList<>();
 	}
 
 	private void setUp() {
@@ -37,16 +41,22 @@ public class Controller implements LoginUserListener, ChooseOptionListener {
 
 	public void displayLogin() {
 		loginScreen.setLoginUserListener(this);
+		loginScreen.setChooseOptionListener(this);
+		
 		loginScreen.display();
+
+		lastScreenOpenDeque.push(loginScreen);
 	}
 
 	public void displayEmployeeMenu() {
 		employeeMainMenuScreen.setChooseOptionListener(this);
+		
 		employeeMainMenuScreen.display();
 	}
 
 	public void displayListCar() {
-		this.lastScreenOpen = employeeMainMenuScreen;
+		lastScreenOpenDeque.push(employeeMainMenuScreen);
+		
 		listCarScreen.display();
 	}
 
@@ -56,16 +66,16 @@ public class Controller implements LoginUserListener, ChooseOptionListener {
 	}
 
 	@Override
-	public void optionChosen(int option) {
+	public void optionChosen(MenuOptions option) {
 		this.option = option;
 	}
 
-	public Screen getLastScreenOpen() {
-		return lastScreenOpen;
+	public Deque<Screen> getLastScreenOpenDeque() {
+		return lastScreenOpenDeque;
 	}
 
-	public void setLastScreenOpen(Screen lastScreenOpen) {
-		this.lastScreenOpen = lastScreenOpen;
+	public void setLastScreenOpenDeque(Deque<Screen> lastScreenOpenDeque) {
+		this.lastScreenOpenDeque = lastScreenOpenDeque;
 	}
 
 	public User getUser() {
@@ -76,12 +86,8 @@ public class Controller implements LoginUserListener, ChooseOptionListener {
 		this.user = user;
 	}
 
-	public int getOption() {
+	public MenuOptions getOption() {
 		return option;
-	}
-
-	public void setOption(int option) {
-		this.option = option;
 	}
 
 }
