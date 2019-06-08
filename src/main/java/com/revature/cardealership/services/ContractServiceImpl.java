@@ -76,7 +76,7 @@ public class ContractServiceImpl implements ContractService {
 
 		// Adding the contract's remaining payments to the list
 		for (int i = contract.getPaymentsMade(); i < contract.getTotalPayments(); i++) {
-			Payment payment = new Payment(i + 1, contract.getCustomer().toString(), contract.getCar().toString(), null,
+			Payment payment = new Payment(i + 1, contract.getCustomer().toString(), contract.getCar().toSingleLineString(), null,
 					0.0);
 
 			payments.add(payment);

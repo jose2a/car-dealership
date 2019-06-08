@@ -68,4 +68,11 @@ public class Dealership implements Serializable {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	
+
 }

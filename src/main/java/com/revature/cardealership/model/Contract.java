@@ -152,9 +152,8 @@ public class Contract implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Contract [idContract=" + contractId + ", signedDate=" + signedDate + ", amount=" + amount
-				+ ", paymentsMade=" + paymentsMade + ", totalPayments=" + totalPayments + ", monthlyPayment="
-				+ monthlyPayment + ", status=" + status + ", customer=" + customer + ", car=" + car + "]";
+		return "Offer No: " + contractId + "\nCustomer:" + customer + "\nCar: " + car + "\nSigned On: " + signedDate
+				+ "\nAmount Offered: " + amount + "\nStatus: " + status.toString();
 	}
 
 }

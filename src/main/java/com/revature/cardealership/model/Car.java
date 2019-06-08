@@ -137,8 +137,11 @@ public class Car implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Car [vin=" + vin + ", make=" + make + ", model=" + model + ", price=" + price + ", isSold=" + isSold
-				+ "]";
+		return "VIN number: " + vin + "\nMake: " + make + "\nModel: " + model + "\nPrice: " + price + "\nSold: " + isSold;
+	}
+	
+	public String toSingleLineString() {
+		return "VIN number: " + vin + ", Make: " + make + ", Model: " + model + ", Price: " + price + ", Sold: " + isSold;
 	}
 
 }
