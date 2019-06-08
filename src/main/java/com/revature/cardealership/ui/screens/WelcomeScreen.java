@@ -44,7 +44,8 @@ public class WelcomeScreen implements Screen {
 			loginScreen.display();
 			break;
 		case 2:
-			// Register user
+			RegisterUserScreen registerUserScreen = new RegisterUserScreen(this);
+			registerUserScreen.display();
 			break;
 		case 3:
 			if (previousScreen != null) {
