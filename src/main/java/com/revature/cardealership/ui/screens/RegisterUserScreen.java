@@ -41,8 +41,6 @@ public class RegisterUserScreen implements Screen {
 
 			System.out.println("Enter last name:");
 			String lastName = InputUtil.getString();
-			
-			System.out.println("--------------------------------------");
 
 			try {
 				isRegistered = userService.registerCustomer(username, password, firstName, lastName);
@@ -50,6 +48,10 @@ public class RegisterUserScreen implements Screen {
 				if (isRegistered) {
 					LogUtil.trace("Customer registered successfully.");
 					System.out.println("Customer registered successfully.");
+					
+					if (previousScreen != null) {
+						previousScreen.display();
+					}
 				}
 			} catch (IllegalArgumentException ex) {
 				System.out.println(ex.getMessage());

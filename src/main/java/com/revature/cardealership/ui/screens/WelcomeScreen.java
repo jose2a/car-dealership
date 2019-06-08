@@ -24,6 +24,8 @@ public class WelcomeScreen implements Screen {
 			System.out.println("2. Register.");
 			System.out.println("3. Exit.");
 			
+			System.out.println("---------------------------------------------");
+			
 			System.out.println("Select an option from the menu:");
 			
 			opt = InputUtil.getNumber(1, 3);
