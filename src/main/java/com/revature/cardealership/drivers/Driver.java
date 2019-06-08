@@ -14,8 +14,28 @@ public class Driver {
 		User user = controller.getUser();
 		System.out.println(user);
 		
+		int option = 0;
+		
 		if(user instanceof Employee) {
-			System.out.println("Employee");
+			controller.displayEmployeeMenu();
+			option = controller.getOption();
+			
+			switch (option) {
+			case 1:
+				controller.displayListCar();
+				try {
+					Thread.sleep(20000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+
+			default:
+				break;
+			}
+			
+			controller.getLastScreenOpen().display();
 		}
 		if(user instanceof Customer) {
 			System.out.println("Customer");

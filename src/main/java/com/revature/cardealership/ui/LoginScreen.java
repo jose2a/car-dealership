@@ -44,7 +44,7 @@ public class LoginScreen implements Screen {
 	
 	private void fireLoginEvent(User user) {
 		if (this.loginUserListener != null) {
-			loginUserListener.userLoggedIn(user);
+			loginUserListener.userLogin(user);
 		}
 	}
 
