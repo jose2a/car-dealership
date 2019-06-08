@@ -106,6 +106,10 @@ public class ContractServiceImpl implements ContractService {
 		if (car == null) {
 			throw new NotFoundRecordException("Car does not exist in the system.");
 		}
+		
+		if (car.isSold()) {
+			throw new IllegalArgumentException("Car was already sold.");
+		}
 
 		// Get new id for contract
 		String contractId = getRandomContractId();
