@@ -34,6 +34,8 @@ public class LoginScreen implements Screen {
 		do {
 			System.out.println("--------- LOGIN ----------\n");
 			
+			InputUtil.getString();
+			
 			System.out.println("Enter username:");
 			String username = InputUtil.getString();
 			

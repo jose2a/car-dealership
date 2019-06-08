@@ -34,10 +34,14 @@ public class EmployeeMenuScreen implements Screen {
 			} catch (IOException e) {
 				LogUtil.error(e.getMessage());
 			}
-//			option = MenuOptions.LIST_CARS_EMPLOYEE;
 			break;
 		case 2:
-//			option = MenuOptions.ADD_CAR;
+			try {
+				Screen addCarScreen = new AddCarScreen(this);
+				addCarScreen.display();
+			} catch (IOException e) {
+				LogUtil.error(e.getMessage());
+			}
 			break;
 		case 3:
 //			option = MenuOptions.LIST_OFFER_EMPLOYEE;

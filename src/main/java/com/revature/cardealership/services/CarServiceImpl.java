@@ -33,7 +33,7 @@ public class CarServiceImpl implements CarService {
 			}
 
 			LogUtil.trace("Car with the same VIN already in the file.");
-			throw new PreexistingRecordException();
+			throw new PreexistingRecordException("Car with the same VIN already in the file.");
 		}
 
 		return false;
