@@ -68,7 +68,7 @@ public class Payment implements Comparable {
 	@Override
 	public String toString() {
 		return "Payment No: " + paymentNo + ", Customer: " + customerInfo + ", Car: " + carInfo + ", Paid On: "
-				+ paidDate + ", Amount: " + amountPaid;
+				+ (paidDate == null ? "--------" : paidDate) + ", Amount: " + String.format("%1$,.2f", amountPaid);
 	}
 
 	@Override

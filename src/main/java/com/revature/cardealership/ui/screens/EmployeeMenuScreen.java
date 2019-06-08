@@ -53,7 +53,12 @@ public class EmployeeMenuScreen implements Screen {
 			}
 			break;
 		case 4:
-			// List payments
+			try {
+				Screen listPaymentScreen = new ListPaymentScreen(this);
+				listPaymentScreen.display();
+			} catch (IOException e) {
+				LogUtil.error(e.getMessage());
+			}
 			break;
 		case 5:
 			System.exit(0);

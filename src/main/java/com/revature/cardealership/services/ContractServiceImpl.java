@@ -46,16 +46,16 @@ public class ContractServiceImpl implements ContractService {
 		if (username == null) {
 			throw new IllegalArgumentException("Please select a valid customer username.");
 		}
-		
+
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
 		Customer customer = getCustomerByUsername(username, userIter);
-		
+
 		if (customer == null) {
 			throw new NotFoundRecordException("The customer is not in the system.");
 		}
-		
+
 		Set<Payment> paymentsFromContracts = getPaymentsFromContracts(customer.getContracts().iterator());
-		
+
 		return paymentsFromContracts;
 	}
 
@@ -64,7 +64,7 @@ public class ContractServiceImpl implements ContractService {
 		if (contractId == null) {
 			throw new IllegalArgumentException("Please select a valid offer number.");
 		}
-		
+
 		Set<Payment> payments = new TreeSet<>();
 
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
@@ -76,8 +76,8 @@ public class ContractServiceImpl implements ContractService {
 
 		// Adding the contract's remaining payments to the list
 		for (int i = contract.getPaymentsMade(); i < contract.getTotalPayments(); i++) {
-			Payment payment = new Payment(i + 1, contract.getCustomer().toString(), contract.getCar().toSingleLineString(), null,
-					0.0);
+			Payment payment = new Payment(i + 1, contract.getCustomer().toString(),
+					contract.getCar().toSingleLineString(), null, 0.0);
 
 			payments.add(payment);
 		}
@@ -151,6 +151,7 @@ public class ContractServiceImpl implements ContractService {
 
 			double monthlyPayment = contract.getAmount() / TOTAL_CONTRACT_MONTHS;
 			contract.setMonthlyPayment(monthlyPayment);
+			contract.getCar().setSold(true); // Car is sold
 
 			userIter = this.dealership.getUsers().iterator();
 
@@ -343,7 +344,7 @@ public class ContractServiceImpl implements ContractService {
 
 					// Check if contract is in the system
 					if (contract.getContractId().equals(contractId)) {
-						
+
 						LogUtil.debug(contract.toSingleLineString());
 						break;
 					}
@@ -359,10 +360,10 @@ public class ContractServiceImpl implements ContractService {
 
 		return contract;
 	}
-	
+
 	// Get all the payments for the list of contracts
 	private Set<Payment> getPaymentsFromContracts(Iterator<Contract> contractIter) {
-		Set<Payment> payments = new HashSet<>();
+		Set<Payment> payments = new TreeSet<>();
 
 		while (contractIter.hasNext()) {
 			Contract contract = contractIter.next();
@@ -380,8 +381,8 @@ public class ContractServiceImpl implements ContractService {
 		for (int i = 0; i < contract.getPaymentsMade(); i++) {
 			LocalDate paidDate = contract.getSignedDate().plusMonths(i);
 
-			Payment payment = new Payment(i + 1, contract.getCustomer().toString(), contract.getCar().toString(),
-					paidDate, contract.getMonthlyPayment());
+			Payment payment = new Payment(i + 1, contract.getCustomer().toString(),
+					contract.getCar().toSingleLineString(), paidDate, contract.getMonthlyPayment());
 			payments.add(payment);
 		}
 
