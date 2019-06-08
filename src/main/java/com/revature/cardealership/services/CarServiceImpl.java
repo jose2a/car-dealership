@@ -10,12 +10,12 @@ import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.model.Dealership;
-import com.revature.cardealership.utils.DAOUtils;
+import com.revature.cardealership.utils.DAOUtil;
 import com.revature.cardealership.utils.LogUtil;
 
 public class CarServiceImpl implements CarService {
 
-	private DealershipDAO dao = DAOUtils.geDealershipDAO();
+	private DealershipDAO dao = DAOUtil.geDealershipDAO();
 	private Dealership dealership;
 
 	public CarServiceImpl() throws IOException {

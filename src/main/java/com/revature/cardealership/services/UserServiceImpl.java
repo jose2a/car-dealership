@@ -8,11 +8,11 @@ import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Customer;
 import com.revature.cardealership.model.Dealership;
 import com.revature.cardealership.model.User;
-import com.revature.cardealership.utils.DAOUtils;
+import com.revature.cardealership.utils.DAOUtil;
 
 public class UserServiceImpl implements UserService {
 
-	private DealershipDAO dao = DAOUtils.geDealershipDAO();
+	private DealershipDAO dao = DAOUtil.geDealershipDAO();
 	private Dealership dealership;
 
 	public UserServiceImpl() throws IOException {
