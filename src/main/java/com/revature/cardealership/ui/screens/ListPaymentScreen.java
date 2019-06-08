@@ -32,8 +32,9 @@ public class ListPaymentScreen implements Screen {
 
 		int opt = 0;
 		
-		System.out.println("----- MENU -----");
+		System.out.println("----------- MENU -----------");
 		System.out.println("1. Go back to main menu.");
+		System.out.println("----------------------------");
 
 		do {
 			System.out.println("Select an option from the menu:");

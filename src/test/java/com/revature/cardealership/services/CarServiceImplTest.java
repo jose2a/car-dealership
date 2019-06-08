@@ -121,5 +121,20 @@ public class CarServiceImplTest {
 
 		assertEquals("Charger", car.getModel());
 	}
+	
+	@Test
+	public void _19_getCarsByCustomerUsername_Return_Cars() {
+
+		Iterator<Car> iterator = carService.getCarsByCustomerUsername("user3").iterator();
+
+		Car car = null;
+
+		while (iterator.hasNext()) {
+			car = iterator.next();
+			System.out.println(car.toSingleLineString());
+		}
+
+//		assertEquals("Charger", car.getModel());
+	}
 
 }

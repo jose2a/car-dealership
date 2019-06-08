@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.revature.cardealership.dao.DealershipDAO;
 import com.revature.cardealership.exceptions.NotFoundRecordException;
@@ -96,10 +97,15 @@ public class CarServiceImpl implements CarService {
 
 		while (carIter.hasNext()) {
 			Car car = carIter.next();
+			Set<Car> cars = car.getContracts().stream().filter(c -> c.getCustomer().getUsername().equals(username))
+			.map(c -> c.getCar())
+			.collect(Collectors.toSet());
 
-			if (car.getCustomer() != null && car.getCustomer().getUsername().equals(username)) {
-				carsForUser.add(car);
-			}
+			carsForUser.addAll(cars);
+
+//			if (car.getCustomer() != null && car.getCustomer().getUsername().equals(username)) {
+//				carsForUser.add(car);
+//			}
 		}
 
 		return carsForUser;

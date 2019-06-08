@@ -32,10 +32,11 @@ public class ListOfferScreen implements Screen {
 		}
 
 		int opt = 0;
-		System.out.println("----- MENU -----");
+		System.out.println("----------- MENU -----------");
 		System.out.println("1. Accept an offer.");
 		System.out.println("2. Reject an offer.");
 		System.out.println("3. Go back to main menu.");
+		System.out.println("----------------------------");
 
 		do {
 			System.out.println("Select an option from the menu:");

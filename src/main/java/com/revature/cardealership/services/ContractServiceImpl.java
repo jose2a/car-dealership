@@ -120,6 +120,7 @@ public class ContractServiceImpl implements ContractService {
 
 		car.getContracts().add(contract);
 		customer.getContracts().add(contract);
+		contract.setCustomer(customer);
 
 		if (dao.save()) {
 			return true;
@@ -219,20 +220,16 @@ public class ContractServiceImpl implements ContractService {
 			if (user instanceof Customer) {
 				Customer customer = (Customer) user;
 
-				// If we select all, we didn't filter the contracts
-				if (status == ContractStatus.ALL) {
-					contracts.addAll(customer.getContracts());
-					break;
-				}
-
 				// Access customers' contracts
 				Iterator<Contract> contractIter = customer.getContracts().iterator();
 
 				while (contractIter.hasNext()) {
 					Contract contract = contractIter.next();
-
-					// Check if contract is not accepted
-					if (contract.getStatus() == status) {
+					
+					// If we select all, we didn't filter the contracts
+					if (status == ContractStatus.ALL) {
+						contracts.add(contract);
+					} else if (contract.getStatus() == status) {
 
 						LogUtil.debug(contract.toString());
 

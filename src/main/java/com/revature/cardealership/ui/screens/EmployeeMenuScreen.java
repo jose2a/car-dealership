@@ -20,6 +20,7 @@ public class EmployeeMenuScreen implements Screen {
 		System.out.println("3. See offers.");
 		System.out.println("4. See payments.");
 		System.out.println("5. Exit.");
+		System.out.println("-------------------------");
 
 		do {
 			System.out.println("Select an option from the menu:");

@@ -28,7 +28,7 @@ public class LoginScreen implements Screen {
 		String opt = null;
 
 		do {
-			System.out.println("--------- LOGIN ----------\n");
+			System.out.println("--------- LOGIN ----------");
 			
 			InputUtil.getString();
 			
@@ -37,6 +37,8 @@ public class LoginScreen implements Screen {
 			
 			System.out.println("Enter password:");
 			String password = InputUtil.getString();
+			
+			System.out.println("--------------------------");
 
 			try {
 				user = userService.login(username, password);
@@ -65,10 +67,12 @@ public class LoginScreen implements Screen {
 	}
 	
 	private void userLoggedIn(User user) {
+		System.out.println("Welcome: " + user);
+		
 		if (user instanceof Employee) {
 			new EmployeeMenuScreen().display();
 		} else if (user instanceof Customer) {
-			
+			new CustomerMenuScreen(user.getUsername()).display();
 		}
 	}
 }

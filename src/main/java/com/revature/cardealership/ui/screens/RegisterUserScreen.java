@@ -26,7 +26,7 @@ public class RegisterUserScreen implements Screen {
 		String opt = null;
 
 		do {
-			System.out.println("--------- REGISTER CUSTOMER ----------\n");
+			System.out.println("--------- REGISTER CUSTOMER ----------");
 
 			InputUtil.getString();
 
@@ -41,6 +41,8 @@ public class RegisterUserScreen implements Screen {
 
 			System.out.println("Enter last name:");
 			String lastName = InputUtil.getString();
+			
+			System.out.println("--------------------------------------");
 
 			try {
 				isRegistered = userService.registerCustomer(username, password, firstName, lastName);

@@ -6,17 +6,21 @@ import java.util.Iterator;
 import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.services.CarService;
+import com.revature.cardealership.services.ContractService;
 import com.revature.cardealership.utils.InputUtil;
+import com.revature.cardealership.utils.LogUtil;
 import com.revature.cardealership.utils.ServiceUtil;
 
-public class ListCarScreen implements Screen {
+public class ListCarCustomerScreen implements Screen {
 
 	private CarService carService;
+	private String customerUsername;
 
 	private Screen previousScreen;
 
-	public ListCarScreen(Screen previousScreen) throws IOException {
+	public ListCarCustomerScreen(Screen previousScreen, String customerUsername) throws IOException {
 		this.carService = ServiceUtil.getCarService();
+		this.customerUsername = customerUsername;
 		this.previousScreen = previousScreen;
 	}
 
@@ -33,10 +37,10 @@ public class ListCarScreen implements Screen {
 
 		int opt = 0;
 
-		System.out.println("----------- MENU -----------");
-		System.out.println("1. Remove a car.");
+		System.out.println("------------ MENU ------------");
+		System.out.println("1. Make an offer for a car.");
 		System.out.println("2. Go back to main menu.");
-		System.out.println("----------------------------");
+		System.out.println("------------------------------");
 
 		do {
 			System.out.println("Select an option from the menu:");
@@ -46,7 +50,7 @@ public class ListCarScreen implements Screen {
 
 		switch (opt) {
 		case 1:
-			removeCar();
+			makeAnOffer();
 			break;
 		case 2:
 			break;
@@ -57,23 +61,35 @@ public class ListCarScreen implements Screen {
 		}
 
 	}
-
-	private void removeCar() {
+	
+	private void makeAnOffer() {
+		if (carService != null) {
+			carService = null;
+		}
+		
 
 		try {
+			ContractService contractService = ServiceUtil.getContractService();
+			
 			InputUtil.getString();
 
-			System.out.println("Enter VIN number of the car to be deleted:");
+			System.out.println("Enter VIN number of the car that you want a make an offer:");
 			String vin = InputUtil.getString();
+			
+			System.out.println("Enter the amount of your offer:");
+			double amount = InputUtil.getDouble();
 
-			carService.removeCar(vin);
+			contractService.makeAnOffer(customerUsername, vin, amount);
 
-			System.out.println("Car removed successfully!!!");
+			System.out.println("The offer was successfully made!!!");
+			System.out.println("The car will be in your list if your offer gets accepted.");
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		} catch (NotFoundRecordException e) {
 			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			LogUtil.error(e.getMessage());
 		}
 	}
 
