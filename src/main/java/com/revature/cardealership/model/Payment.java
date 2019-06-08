@@ -2,99 +2,78 @@ package com.revature.cardealership.model;
 
 import java.time.LocalDate;
 
-public class Payment {
+@SuppressWarnings("rawtypes")
+public class Payment implements Comparable {
 
-	private String paymentId;
-	private double amount;
-	private LocalDate datePaid;
-
-	private transient Contract contract;
-	private String contractId;
+	private Integer paymentNo;
+	private String customerInfo;
+	private String carInfo;
+	private LocalDate paidDate;
+	private double amountPaid;
 
 	public Payment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getPaymentId() {
-		return paymentId;
+	public Payment(Integer paymentNo, String customerInfo, String carInfo, LocalDate paidDate, double amountPaid) {
+		super();
+		this.paymentNo = paymentNo;
+		this.customerInfo = customerInfo;
+		this.carInfo = carInfo;
+		this.paidDate = paidDate;
+		this.amountPaid = amountPaid;
 	}
 
-	public void setPaymentId(String paymentId) {
-		this.paymentId = paymentId;
+	public Integer getPaymentNo() {
+		return paymentNo;
 	}
 
-	public double getAmount() {
-		return amount;
+	public void setPaymentNo(Integer paymentNo) {
+		this.paymentNo = paymentNo;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public String getCustomerInfo() {
+		return customerInfo;
 	}
 
-	public LocalDate getDatePaid() {
-		return datePaid;
+	public void setCustomerInfo(String customerInfo) {
+		this.customerInfo = customerInfo;
 	}
 
-	public void setDatePaid(LocalDate datePaid) {
-		this.datePaid = datePaid;
+	public String getCarInfo() {
+		return carInfo;
 	}
 
-	public Contract getContract() {
-		return contract;
+	public void setCarInfo(String carInfo) {
+		this.carInfo = carInfo;
 	}
 
-	public void setContract(Contract contract) {
-		this.contract = contract;
+	public LocalDate getPaidDate() {
+		return paidDate;
 	}
 
-	public String getContractId() {
-		return contractId;
+	public void setPaidDate(LocalDate paidDate) {
+		this.paidDate = paidDate;
 	}
 
-	public void setContractId(String contractId) {
-		this.contractId = contractId;
+	public double getAmountPaid() {
+		return amountPaid;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(amount);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((datePaid == null) ? 0 : datePaid.hashCode());
-		result = prime * result + ((paymentId == null) ? 0 : paymentId.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Payment other = (Payment) obj;
-		if (Double.doubleToLongBits(amount) != Double.doubleToLongBits(other.amount))
-			return false;
-		if (datePaid == null) {
-			if (other.datePaid != null)
-				return false;
-		} else if (!datePaid.equals(other.datePaid))
-			return false;
-		if (paymentId == null) {
-			if (other.paymentId != null)
-				return false;
-		} else if (!paymentId.equals(other.paymentId))
-			return false;
-		return true;
+	public void setAmountPaid(double amountPaid) {
+		this.amountPaid = amountPaid;
 	}
 
 	@Override
 	public String toString() {
-		return "Payment [idPayment=" + paymentId + ", amount=" + amount + ", contract=" + contract + "]";
+		return "Payment No: " + paymentNo + ", Customer: " + customerInfo + ", Car: " + carInfo + ", Paid On: "
+				+ paidDate + ", Amount: " + amountPaid;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		return paymentNo.compareTo(((Payment)o).getPaymentNo());
 	}
 
 }

@@ -2,6 +2,11 @@ package com.revature.cardealership.model;
 
 public class Employee extends User {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Employee() {
 		// TODO Auto-generated constructor stub
 	}

@@ -1,37 +1,42 @@
 package com.revature.cardealership.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
-public class Contract {
+public class Contract implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String contractId;
 	private LocalDate signedDate;
-	private double amount;
-	private int totalMonths;
+	private double amount; // car's sold price
+	private int totalPayments; // Total number of payments
+	private int paymentsMade; // Number of payments made
+	private double monthlyPayment; // amount to pay every month
+	private ContractStatus status;
 
-	private transient Customer customer;
-	private String customerId;
-
-	private transient Car car;
-	private String vin;
-
-	private transient List<Payment> payments;
-	private List<String> paymentIds;
+	private Customer customer;
+	private Car car;
 
 	public Contract() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Contract(String contractId, LocalDate signedDate, double amount, int totalMonths, String customerId,
-			String vin) {
+	public Contract(String contractId, LocalDate signedDate, double amount, int totalPayments, int paymentsMade,
+			ContractStatus status, Customer customer, Car car) {
 		super();
 		this.contractId = contractId;
 		this.signedDate = signedDate;
 		this.amount = amount;
-		this.totalMonths = totalMonths;
-		this.customerId = customerId;
-		this.vin = vin;
+		this.totalPayments = totalPayments;
+		this.monthlyPayment = 0.0;
+		this.paymentsMade = paymentsMade;
+		this.status = status;
+		this.customer = customer;
+		this.car = car;
 	}
 
 	public String getContractId() {
@@ -58,12 +63,36 @@ public class Contract {
 		this.amount = amount;
 	}
 
-	public int getTotalMonths() {
-		return totalMonths;
+	public int getTotalPayments() {
+		return totalPayments;
 	}
 
-	public void setTotalMonths(int totalMonths) {
-		this.totalMonths = totalMonths;
+	public void setTotalPayments(int totalPayments) {
+		this.totalPayments = totalPayments;
+	}
+
+	public int getPaymentsMade() {
+		return paymentsMade;
+	}
+
+	public void setPaymentsMade(int paymentsMade) {
+		this.paymentsMade = paymentsMade;
+	}
+
+	public double getMonthlyPayment() {
+		return monthlyPayment;
+	}
+
+	public void setMonthlyPayment(double monthlyPayment) {
+		this.monthlyPayment = monthlyPayment;
+	}
+
+	public ContractStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ContractStatus status) {
+		this.status = status;
 	}
 
 	public Customer getCustomer() {
@@ -82,38 +111,6 @@ public class Contract {
 		this.car = car;
 	}
 
-	public List<Payment> getPayments() {
-		return payments;
-	}
-
-	public void setPayments(List<Payment> payments) {
-		this.payments = payments;
-	}
-
-	public String getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(String customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getVin() {
-		return vin;
-	}
-
-	public void setVin(String vin) {
-		this.vin = vin;
-	}
-
-	public List<String> getPaymentIds() {
-		return paymentIds;
-	}
-
-	public void setPaymentIds(List<String> paymentIds) {
-		this.paymentIds = paymentIds;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,7 +120,7 @@ public class Contract {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((contractId == null) ? 0 : contractId.hashCode());
 		result = prime * result + ((signedDate == null) ? 0 : signedDate.hashCode());
-		result = prime * result + totalMonths;
+		result = prime * result + totalPayments;
 		return result;
 	}
 
@@ -148,15 +145,15 @@ public class Contract {
 				return false;
 		} else if (!signedDate.equals(other.signedDate))
 			return false;
-		if (totalMonths != other.totalMonths)
+		if (totalPayments != other.totalPayments)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Contract [idContract=" + contractId + ", signedDate=" + signedDate + ", amount=" + amount
-				+ ", totalMonths=" + totalMonths + ", customer=" + customer + ", car=" + car + "]";
+		return "Offer No: " + contractId + "\nCustomer:" + customer + "\nCar: " + car + "\nSigned On: " + signedDate
+				+ "\nAmount Offered: " + amount + "\nStatus: " + status.toString();
 	}
 
 }

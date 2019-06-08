@@ -1,14 +1,26 @@
 package com.revature.cardealership.services;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
+import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.model.Contract;
 import com.revature.cardealership.model.Payment;
 
 public interface ContractService {
 
-	public Contract createContract(String username, String vin, double amount, LocalDate signedDate);
-	public List<Payment> payments(int contractId);
-	public int getRemainingPayments(int contractId);
+	Set<Payment> getAllPayments();
+
+	Set<Payment> getAllPaymentsForCustomer(String username) throws NotFoundRecordException;
+
+	Set<Payment> getRemainingPayments(String contractId);
+
+	boolean makeAnOffer(String username, String carVin, double amount) throws NotFoundRecordException;
+
+	void acceptOffer(String contractId) throws NotFoundRecordException;
+
+	void rejectOffer(String contractId) throws NotFoundRecordException;
+
+	Set<Contract> getPendingOffers();
+
+	Set<Contract> getAllOffers();
 }

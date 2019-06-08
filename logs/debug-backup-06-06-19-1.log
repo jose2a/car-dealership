@@ -1,0 +1,15 @@
+2019-06-06 11:52:41 DEBUG CarDAOImpl:41 - File for the cars does not exist.
+2019-06-06 11:52:41 DEBUG CarDAOImpl:41 - File for the cars does not exist.
+2019-06-06 12:02:22 DEBUG CarDAOImpl:33 - File for the dealership does not exist.
+2019-06-06 12:59:47 DEBUG CarDAOImpl:31 - File for the dealership does not exist.
+2019-06-06 12:59:55 DEBUG CarDAOImpl:31 - File for the dealership does not exist.
+2019-06-06 13:03:42 DEBUG CarDAOImpl:34 - File for the dealership does not exist.
+2019-06-06 13:03:58 DEBUG CarDAOImpl:34 - File for the dealership does not exist.
+2019-06-06 13:50:38 DEBUG CarDAOImpl:35 - File for the dealership does not exist.
+2019-06-06 14:47:25 DEBUG LogginUtil:13 - File for the dealership exist.
+2019-06-06 14:50:19 DEBUG LogginUtil:13 - File for the dealership exist.
+2019-06-06 14:51:10 DEBUG LogginUtil:13 - File for the dealership exist.
+2019-06-06 14:51:21 DEBUG LogginUtil:13 - File for the dealership exist.
+2019-06-06 20:03:40 DEBUG LogginUtil:18 - dealership.dat (No such file or directory)
+2019-06-06 20:19:27 DEBUG CarDAOImpl:41 - File for the cars does not exist.
+2019-06-06 20:19:27 DEBUG CarDAOImpl:41 - File for the cars does not exist.
