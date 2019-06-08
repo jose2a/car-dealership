@@ -11,7 +11,7 @@ import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.model.Dealership;
 import com.revature.cardealership.utils.DAOUtils;
-import com.revature.cardealership.utils.LoggingUtil;
+import com.revature.cardealership.utils.LogUtil;
 
 public class CarServiceImpl implements CarService {
 
@@ -32,7 +32,7 @@ public class CarServiceImpl implements CarService {
 				return dao.save();
 			}
 
-			LoggingUtil.trace("Car with the same VIN already in the file.");
+			LogUtil.trace("Car with the same VIN already in the file.");
 			throw new PreexistingRecordException();
 		}
 
@@ -75,7 +75,7 @@ public class CarServiceImpl implements CarService {
 		}
 
 		if (car == null) {
-			LoggingUtil.trace("Car with VIN: " + vin + " was not found.");
+			LogUtil.trace("Car with VIN: " + vin + " was not found.");
 			throw new NotFoundRecordException("Car with VIN: " + vin + " was not found.");
 		}
 

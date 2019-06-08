@@ -19,7 +19,7 @@ import com.revature.cardealership.model.Dealership;
 import com.revature.cardealership.model.Payment;
 import com.revature.cardealership.model.User;
 import com.revature.cardealership.utils.DAOUtils;
-import com.revature.cardealership.utils.LoggingUtil;
+import com.revature.cardealership.utils.LogUtil;
 
 public class ContractServiceImpl implements ContractService {
 
@@ -229,7 +229,7 @@ public class ContractServiceImpl implements ContractService {
 					// Check if contract is not accepted
 					if (contract.getStatus() == status) {
 
-						LoggingUtil.debug(contract.toString());
+						LogUtil.debug(contract.toString());
 
 						contracts.add(contract);
 					}
@@ -344,7 +344,7 @@ public class ContractServiceImpl implements ContractService {
 					// Check if contract is in the system
 					if (contract.getContractId().equals(contractId)) {
 						
-						LoggingUtil.debug(contract.getContractId() + " vin: " + contract.getCar().getVin()
+						LogUtil.debug(contract.getContractId() + " vin: " + contract.getCar().getVin()
 								+ " accepted: " + contract.getStatus());
 						break;
 					}

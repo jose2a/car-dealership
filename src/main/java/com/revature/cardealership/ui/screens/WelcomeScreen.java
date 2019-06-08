@@ -3,7 +3,7 @@ package com.revature.cardealership.ui.screens;
 import java.io.IOException;
 
 import com.revature.cardealership.utils.InputUtil;
-import com.revature.cardealership.utils.LoggingUtil;
+import com.revature.cardealership.utils.LogUtil;
 
 public class WelcomeScreen implements Screen {
 	
@@ -32,7 +32,7 @@ public class WelcomeScreen implements Screen {
 		try {
 			optionSelected(opt);
 		} catch (IOException e) {
-			LoggingUtil.error(e.getMessage());
+			LogUtil.error(e.getMessage());
 		}
 
 	}
