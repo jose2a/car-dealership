@@ -2,3 +2,17 @@
 2019-06-08 11:39:35 DEBUG LogUtil:18 - abdb vin: 22222222222 accepted: PENDING
 2019-06-08 11:40:10 DEBUG LogUtil:18 - 765cd4fad167 vin: 3333333 accepted: REJECTED
 2019-06-08 11:41:30 DEBUG LogUtil:18 - 4019 vin: 3333333 accepted: ACCEPTED
+2019-06-08 13:14:14 DEBUG LogUtil:18 - Offer No: 8266
+Customer: Peter Parker
+Car: VIN number: 4444444
+Make: Chevy
+Model: Impala
+Price: 35000.0
+Sold: false
+Signed On: 2019-06-08
+Amount Offered: 31000.0
+Status: PENDING
+2019-06-08 14:05:27 DEBUG LogUtil:18 - Offer No: abdb, Customer: Jane Doe, Car: VIN number: 22222222222, Make: Ford, Model: Focus, Price: 23000.0, Sold: false, Signed On: 2019-06-07, Amount Offered: 20000.0, Status: ACCEPTED
+2019-06-08 14:05:27 DEBUG LogUtil:18 - Offer No: 4019, Customer: Jane Doe, Car: VIN number: 3333333, Make: Dodge, Model: Charger, Price: 35000.0, Sold: false, Signed On: 2019-06-07, Amount Offered: 24000.0, Status: ACCEPTED
+2019-06-08 14:42:25 DEBUG LogUtil:18 - Offer No: 8266, Customer: Peter Parker, Car: VIN number: 4444444, Make: Chevy, Model: Impala, Price: 35000.0, Sold: false, Signed On: 2019-06-08, Amount Offered: 31000.0, Status: PENDING
+2019-06-08 14:43:37 DEBUG LogUtil:18 - Offer No: 8266, Customer: Peter Parker, Car: VIN number: 4444444, Make: Chevy, Model: Impala, Price: 35000.0, Sold: false, Signed On: 2019-06-08, Amount Offered: 31000.0, Status: PENDING
