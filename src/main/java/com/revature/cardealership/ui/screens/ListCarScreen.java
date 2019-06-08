@@ -1,4 +1,4 @@
-package com.revature.cardealership.ui;
+package com.revature.cardealership.ui.screens;
 
 import java.io.IOException;
 import java.util.Iterator;

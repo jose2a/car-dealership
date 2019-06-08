@@ -1,12 +1,12 @@
 package com.revature.cardealership.ui.controller;
 
 import com.revature.cardealership.model.User;
-import com.revature.cardealership.ui.EmployeeMainMenuScreen;
-import com.revature.cardealership.ui.ListCarScreen;
-import com.revature.cardealership.ui.LoginScreen;
-import com.revature.cardealership.ui.Screen;
 import com.revature.cardealership.ui.listeners.ChooseOptionListener;
 import com.revature.cardealership.ui.listeners.LoginUserListener;
+import com.revature.cardealership.ui.screens.EmployeeMainMenuScreen;
+import com.revature.cardealership.ui.screens.ListCarScreen;
+import com.revature.cardealership.ui.screens.LoginScreen;
+import com.revature.cardealership.ui.screens.Screen;
 import com.revature.cardealership.utils.LoggingUtil;
 
 public class Controller implements LoginUserListener, ChooseOptionListener {

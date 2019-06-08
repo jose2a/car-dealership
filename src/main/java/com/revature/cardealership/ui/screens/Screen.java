@@ -1,4 +1,4 @@
-package com.revature.cardealership.ui;
+package com.revature.cardealership.ui.screens;
 
 public interface Screen {
 	void display();

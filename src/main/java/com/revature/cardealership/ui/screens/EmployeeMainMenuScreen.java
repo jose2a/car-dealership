@@ -1,4 +1,4 @@
-package com.revature.cardealership.ui;
+package com.revature.cardealership.ui.screens;
 
 import com.revature.cardealership.ui.listeners.ChooseOptionListener;
 import com.revature.cardealership.utils.InputUtil;
