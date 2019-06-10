@@ -26,7 +26,7 @@ public class ListCarCustomerScreen implements Screen {
 
 	@Override
 	public void display() {
-		System.out.println("--------- CARS ---------");
+		System.out.println("------------ CARS ------------");
 
 		Iterator<Car> carIterator = carService.getCars().iterator();
 
@@ -37,7 +37,7 @@ public class ListCarCustomerScreen implements Screen {
 
 		int opt = 0;
 
-		System.out.println("------------ MENU ------------");
+		System.out.println("------------ MENU -------------");
 		System.out.println("1. Make an offer for a car.");
 		System.out.println("2. Go back to main menu.");
 		System.out.println("------------------------------");
@@ -66,9 +66,9 @@ public class ListCarCustomerScreen implements Screen {
 		if (carService != null) {
 			carService = null;
 		}
-		
 
 		try {
+			System.out.println("-------------------- MAKE AN OFFER ------------------------");
 			ContractService contractService = ServiceUtil.getContractService();
 			
 			InputUtil.getString();
@@ -80,6 +80,8 @@ public class ListCarCustomerScreen implements Screen {
 			double amount = InputUtil.getDouble();
 
 			contractService.makeAnOffer(customerUsername, vin, amount);
+			
+			System.out.println("-----------------------------------------------------------");
 
 			System.out.println("The offer was successfully made!!!");
 			System.out.println("The car will be in your list if your offer gets accepted.");

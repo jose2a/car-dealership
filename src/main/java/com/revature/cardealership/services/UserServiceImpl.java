@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import com.revature.cardealership.dao.DealershipDAO;
+import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Customer;
 import com.revature.cardealership.model.Dealership;
@@ -21,8 +22,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User login(String username, String password) {
-		if (username == null || password == null) {
+	public User login(String username, String password) throws NotFoundRecordException {
+		if ((username == null || username.isEmpty()) || (password == null || password.isEmpty())) {
 			throw new IllegalArgumentException("Username and password should not be empty.");
 		}
 
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
 		}
 
-		return null;
+		throw new NotFoundRecordException("Verify your usernama and password.");
 	}
 
 	@Override
@@ -68,19 +69,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	private void validateCustomer(String username, String password, String firstName, String lastName) {
-		if (username == null) {
+		if (username == null || username.isEmpty()) {
 			throw new IllegalArgumentException("Username shoud not be empty");
 		}
 
-		if (password == null) {
+		if (password == null || password.isEmpty()) {
 			throw new IllegalArgumentException("Password shoud not be empty");
 		}
 
-		if (firstName == null) {
+		if (firstName == null || firstName.isEmpty()) {
 			throw new IllegalArgumentException("Fist Name shoud not be empty");
 		}
 
-		if (lastName == null) {
+		if (lastName == null || lastName.isEmpty()) {
 			throw new IllegalArgumentException("Last Name shoud not be empty");
 		}
 	}

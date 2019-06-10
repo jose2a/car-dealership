@@ -22,7 +22,7 @@ public class ListOfferScreen implements Screen {
 
 	@Override
 	public void display() {
-		System.out.println("--------- OFFERS ---------");
+		System.out.println("------------- OFFERS --------------");
 
 		Iterator<Contract> contractIterator = contractService.getAllOffers().iterator();
 
@@ -64,14 +64,20 @@ public class ListOfferScreen implements Screen {
 	private void acceptOffer() {
 
 		try {
+			System.out.println("--------------------------------------");
+			
 			InputUtil.getString();
 
 			System.out.println("Enter offer number to be accepted:");
 			String contractId = InputUtil.getString();
 
 			contractService.acceptOffer(contractId);
+			
+			System.out.println("--------------------------------------");
 
 			System.out.println("Offer accepted successfully!!!");
+			
+			System.out.println("--------------------------------------");
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
@@ -83,14 +89,20 @@ public class ListOfferScreen implements Screen {
 	private void rejectOffer() {
 
 		try {
+			System.out.println("--------------------------------------");
+			
 			InputUtil.getString();
 
 			System.out.println("Enter offer number to be rejected:");
 			String contractId = InputUtil.getString();
 
 			contractService.rejectOffer(contractId);
+			
+			System.out.println("--------------------------------------");
 
 			System.out.println("Offer rejected successfully!!!");
+			
+			System.out.println("--------------------------------------");
 
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());

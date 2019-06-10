@@ -46,9 +46,12 @@ public class RegisterUserScreen implements Screen {
 				isRegistered = userService.registerCustomer(username, password, firstName, lastName);
 
 				if (isRegistered) {
+					System.out.println("--------------------------------------");
+
 					LogUtil.trace("Customer registered successfully.");
+
 					System.out.println("Customer registered successfully.");
-					
+
 					if (previousScreen != null) {
 						previousScreen.display();
 					}
@@ -59,7 +62,10 @@ public class RegisterUserScreen implements Screen {
 				System.out.println(e.getMessage());
 			}
 
+			System.out.println("--------------------------------------");
+
 			System.out.println("Do you want to continue? y/n");
+
 			opt = InputUtil.getString();
 
 		} while (!isRegistered && (opt.equals(null) || opt.toLowerCase().equals("y")));

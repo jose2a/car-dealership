@@ -2,6 +2,7 @@ package com.revature.cardealership.ui.screens;
 
 import java.io.IOException;
 
+import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.model.Customer;
 import com.revature.cardealership.model.Employee;
 import com.revature.cardealership.model.User;
@@ -49,6 +50,8 @@ public class LoginScreen implements Screen {
 				}
 			} catch (IllegalArgumentException ex) {
 				System.out.println(ex.getMessage());
+			} catch (NotFoundRecordException e) {
+				System.out.println(e.getMessage());
 			}
 
 			System.out.println("Do you want to continue? y/n");
@@ -67,7 +70,11 @@ public class LoginScreen implements Screen {
 	}
 	
 	private void userLoggedIn(User user) {
-		System.out.println("Welcome: " + user);
+		System.out.println("--------------------------------------");
+		
+		System.out.println("WELCOME: " + user);
+		
+		System.out.println("--------------------------------------");
 		
 		if (user instanceof Employee) {
 			new EmployeeMenuScreen().display();

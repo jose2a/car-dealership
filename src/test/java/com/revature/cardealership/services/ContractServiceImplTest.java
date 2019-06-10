@@ -141,12 +141,12 @@ public class ContractServiceImplTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void getRemainingPayments_ContractIdIsNull_ShouldThrowIllegalArgumentException() {
+	public void getRemainingPayments_ContractIdIsNull_ShouldThrowIllegalArgumentException() throws NotFoundRecordException {
 		service.getRemainingPayments(null);
 	}
 
 	@Test
-	public void getRemainingPayments_ShouldReturnSetWithPayments() {
+	public void getRemainingPayments_ShouldReturnSetWithPayments() throws NotFoundRecordException {
 
 		Set<Payment> payments = service.getRemainingPayments("4019");
 

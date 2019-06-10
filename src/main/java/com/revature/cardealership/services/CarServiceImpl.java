@@ -10,6 +10,7 @@ import com.revature.cardealership.dao.DealershipDAO;
 import com.revature.cardealership.exceptions.NotFoundRecordException;
 import com.revature.cardealership.exceptions.PreexistingRecordException;
 import com.revature.cardealership.model.Car;
+import com.revature.cardealership.model.ContractStatus;
 import com.revature.cardealership.model.Dealership;
 import com.revature.cardealership.utils.DAOUtil;
 import com.revature.cardealership.utils.LogUtil;
@@ -27,6 +28,9 @@ public class CarServiceImpl implements CarService {
 	@Override
 	public boolean addCar(Car car) throws PreexistingRecordException {
 		if (car != null) {
+			
+			validateCar(car);
+			
 			if (!isCarAdded(car)) {
 				dealership.addCar(car);
 
@@ -38,6 +42,20 @@ public class CarServiceImpl implements CarService {
 		}
 
 		return false;
+	}
+
+	private void validateCar(Car car) {
+		if(car.getVin().isEmpty()) {
+			throw new IllegalArgumentException("Vin number should not be empty");
+		}
+		
+		if(car.getMake().isEmpty()) {
+			throw new IllegalArgumentException("Make number should not be empty");
+		}
+		
+		if (car.getModel().isEmpty()) {
+			throw new IllegalArgumentException("Model number should not be empty");
+		}
 	}
 
 	private boolean isCarAdded(Car car) {
@@ -97,15 +115,11 @@ public class CarServiceImpl implements CarService {
 
 		while (carIter.hasNext()) {
 			Car car = carIter.next();
-			Set<Car> cars = car.getContracts().stream().filter(c -> c.getCustomer().getUsername().equals(username))
-			.map(c -> c.getCar())
-			.collect(Collectors.toSet());
+			Set<Car> cars = car.getContracts().stream().filter(
+					c -> c.getCustomer().getUsername().equals(username) && c.getStatus() == ContractStatus.ACCEPTED)
+					.map(c -> c.getCar()).collect(Collectors.toSet());
 
 			carsForUser.addAll(cars);
-
-//			if (car.getCustomer() != null && car.getCustomer().getUsername().equals(username)) {
-//				carsForUser.add(car);
-//			}
 		}
 
 		return carsForUser;

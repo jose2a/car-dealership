@@ -12,7 +12,8 @@ public interface ContractService {
 
 	Set<Payment> getAllPaymentsForCustomer(String username) throws NotFoundRecordException;
 
-	Set<Payment> getRemainingPayments(String contractId);
+	Set<Payment> getRemainingPayments(String contractId) throws NotFoundRecordException;
+	Set<Payment> getRemainingPaymentsForCar(String vin, String usernamex) throws NotFoundRecordException;
 
 	boolean makeAnOffer(String username, String carVin, double amount) throws NotFoundRecordException;
 

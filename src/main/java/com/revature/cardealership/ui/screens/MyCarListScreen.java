@@ -5,9 +5,7 @@ import java.util.Iterator;
 
 import com.revature.cardealership.model.Car;
 import com.revature.cardealership.services.CarService;
-import com.revature.cardealership.services.ContractService;
 import com.revature.cardealership.utils.InputUtil;
-import com.revature.cardealership.utils.LogUtil;
 import com.revature.cardealership.utils.ServiceUtil;
 
 public class MyCarListScreen implements Screen {
@@ -25,13 +23,21 @@ public class MyCarListScreen implements Screen {
 
 	@Override
 	public void display() {
-		System.out.println("--------- YOUR CARS ---------");
+		System.out.println("----------------- YOUR CARS -------------------");
 
-		Iterator<Car> carIterator = carService.getCarsByCustomerUsername(customerUsername).iterator();
+		try {
+			Iterator<Car> carIterator = carService.getCarsByCustomerUsername(customerUsername).iterator();
 
-		while (carIterator.hasNext()) {
-			Car car = carIterator.next();
-			System.out.println(car.toSingleLineString());
+			while (carIterator.hasNext()) {
+				Car car = carIterator.next();
+				System.out.println(car.toSingleLineString());
+			}
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			
+			if (previousScreen != null) {
+				previousScreen.display();
+			}
 		}
 
 		int opt = 0;
@@ -49,7 +55,18 @@ public class MyCarListScreen implements Screen {
 
 		switch (opt) {
 		case 1:
-			showRemainingPaymentsForACar();
+			System.out.println("------------------------------------------------------------------------");
+			
+			InputUtil.getString();
+
+			System.out.println("Enter the vin number of the car that you want to see the remaining payments:");
+			String vin = InputUtil.getString();
+			try {
+				Screen listPaymentCustomer = new ListPaymentCustomerScreen(this, vin, customerUsername);
+				listPaymentCustomer.display();
+			} catch (IOException e) {
+				System.out.println(e.getMessage());
+			}
 			break;
 		case 2:
 			break;
@@ -59,32 +76,6 @@ public class MyCarListScreen implements Screen {
 			previousScreen.display();
 		}
 
-	}
-	
-	private void showRemainingPaymentsForACar() {
-		if (carService != null) {
-			carService = null;
-		}
-		
-
-		try {
-			ContractService contractService = ServiceUtil.getContractService();
-			
-			InputUtil.getString();
-
-			System.out.println("Enter the contract No. number of the car that you want to see the remaining payments:");
-			String contractId = InputUtil.getString();
-
-			contractService.getRemainingPayments(contractId);
-
-			System.out.println("The offer was successfully made!!!");
-			System.out.println("The car will be in your list if your offer gets accepted.");
-
-		} catch (IllegalArgumentException e) {
-			System.out.println(e.getMessage());
-		} catch (IOException e) {
-			LogUtil.error(e.getMessage());
-		}
 	}
 
 }

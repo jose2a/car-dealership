@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import com.revature.cardealership.dao.DealershipDAO;
 import com.revature.cardealership.exceptions.NotFoundRecordException;
@@ -43,7 +44,7 @@ public class ContractServiceImpl implements ContractService {
 
 	@Override
 	public Set<Payment> getAllPaymentsForCustomer(String username) throws NotFoundRecordException {
-		if (username == null) {
+		if (username == null || username.isEmpty()) {
 			throw new IllegalArgumentException("Please select a valid customer username.");
 		}
 
@@ -60,8 +61,30 @@ public class ContractServiceImpl implements ContractService {
 	}
 
 	@Override
-	public Set<Payment> getRemainingPayments(String contractId) {
-		if (contractId == null) {
+	public Set<Payment> getRemainingPaymentsForCar(String vin, String username) throws NotFoundRecordException {
+		if (vin == null || vin.isEmpty()) {
+			throw new IllegalArgumentException("Please enter a valid vin number.");
+		}
+		if (username == null || username.isEmpty()) {
+			throw new IllegalArgumentException("Please enter a valid username.");
+		}
+
+		Car car = getCarByVinNumber(vin, dealership.getCars().iterator());
+		
+		if (car == null) {
+			throw new NotFoundRecordException("The car is not in the system.");
+		}
+
+		String contractId = car.getContracts().stream()
+				.filter(c -> c.getCar().getVin().equals(vin) && c.getCustomer().getUsername().equals(username)
+						&& c.getStatus() == ContractStatus.ACCEPTED)
+				.map(c -> c.getContractId()).collect(Collectors.toList()).get(0);
+		return getRemainingPayments(contractId);
+	}
+
+	@Override
+	public Set<Payment> getRemainingPayments(String contractId) throws NotFoundRecordException {
+		if (contractId == null || contractId.isEmpty()) {
 			throw new IllegalArgumentException("Please select a valid offer number.");
 		}
 
@@ -70,6 +93,10 @@ public class ContractServiceImpl implements ContractService {
 		Iterator<User> userIter = this.dealership.getUsers().iterator();
 
 		Contract contract = findContractByContractId(contractId, userIter);
+		
+		if (contract == null) {
+			throw new NotFoundRecordException("An offer for this car does not exist.");
+		}
 
 		// Get all the payments made to a contract
 		payments.addAll(getPaymentForContract(contract));
@@ -106,7 +133,7 @@ public class ContractServiceImpl implements ContractService {
 		if (car == null) {
 			throw new NotFoundRecordException("Car does not exist in the system.");
 		}
-		
+
 		if (car.isSold()) {
 			throw new IllegalArgumentException("Car was already sold.");
 		}
@@ -151,6 +178,7 @@ public class ContractServiceImpl implements ContractService {
 
 		// If the offer was accepted, we don't need to accept it again
 		if (contract.getStatus() != ContractStatus.ACCEPTED) {
+			
 			contract.setStatus(ContractStatus.ACCEPTED);
 			contract.setTotalPayments(TOTAL_CONTRACT_MONTHS);
 
@@ -225,7 +253,7 @@ public class ContractServiceImpl implements ContractService {
 
 				while (contractIter.hasNext()) {
 					Contract contract = contractIter.next();
-					
+
 					// If we select all, we didn't filter the contracts
 					if (status == ContractStatus.ALL) {
 						contracts.add(contract);

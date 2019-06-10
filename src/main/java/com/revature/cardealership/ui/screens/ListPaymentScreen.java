@@ -21,7 +21,7 @@ public class ListPaymentScreen implements Screen {
 
 	@Override
 	public void display() {
-		System.out.println("--------- PAYMENTS ---------");
+		System.out.println("-------------- PAYMENTS --------------");
 
 		Iterator<Payment> paymentsIterator = contractService.getAllPayments().iterator();
 

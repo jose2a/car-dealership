@@ -29,7 +29,7 @@ public class DealershipDAOImpl implements DealershipDAO {
 
 			this.dealership = (Dealership) ois.readObject();
 			
-			LogUtil.trace("Read dealership from file");
+			LogUtil.trace("Read dealership from file.");
 
 			return true;
 		} catch (FileNotFoundException e) {

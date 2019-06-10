@@ -61,12 +61,16 @@ public class ListCarScreen implements Screen {
 	private void removeCar() {
 
 		try {
+			System.out.println("---------------------------------------------");
+			
 			InputUtil.getString();
 
 			System.out.println("Enter VIN number of the car to be deleted:");
 			String vin = InputUtil.getString();
 
 			carService.removeCar(vin);
+			
+			System.out.println("---------------------------------------------");
 
 			System.out.println("Car removed successfully!!!");
 
